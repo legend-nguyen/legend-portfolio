@@ -1,0 +1,897 @@
+{
+  "lang": "en",
+  "voice": "en-US-GuyNeural",
+  "textHash": "d891de996f1f27056e83b11a6b371d19b86ab80b646ea0f4062f6622f2ad84d7",
+  "duration": 55.8,
+  "words": [
+    {
+      "text": "Hello",
+      "start": 0.1,
+      "end": 0.6625,
+      "charStart": 0,
+      "charEnd": 5
+    },
+    {
+      "text": "I’m",
+      "start": 1.525,
+      "end": 1.8,
+      "charStart": 7,
+      "charEnd": 10
+    },
+    {
+      "text": "Nguyen",
+      "start": 1.8125,
+      "end": 2.1125,
+      "charStart": 11,
+      "charEnd": 17
+    },
+    {
+      "text": "Huyen",
+      "start": 2.1375,
+      "end": 2.4125,
+      "charStart": 18,
+      "charEnd": 23
+    },
+    {
+      "text": "Thoai",
+      "start": 2.4375,
+      "end": 2.9875,
+      "charStart": 24,
+      "charEnd": 29
+    },
+    {
+      "text": "A",
+      "start": 3.8625,
+      "end": 3.9875,
+      "charStart": 32,
+      "charEnd": 33
+    },
+    {
+      "text": "full-stack",
+      "start": 4.0,
+      "end": 4.4625,
+      "charStart": 34,
+      "charEnd": 44
+    },
+    {
+      "text": "developer",
+      "start": 4.4875,
+      "end": 5.0125,
+      "charStart": 45,
+      "charEnd": 54
+    },
+    {
+      "text": "with",
+      "start": 5.0375,
+      "end": 5.2,
+      "charStart": 55,
+      "charEnd": 59
+    },
+    {
+      "text": "over",
+      "start": 5.225,
+      "end": 5.45,
+      "charStart": 60,
+      "charEnd": 64
+    },
+    {
+      "text": "5 years",
+      "start": 5.475,
+      "end": 6.0375,
+      "charStart": 65,
+      "charEnd": 72
+    },
+    {
+      "text": "of",
+      "start": 6.0625,
+      "end": 6.1375,
+      "charStart": 73,
+      "charEnd": 75
+    },
+    {
+      "text": "experience",
+      "start": 6.1625,
+      "end": 6.7625,
+      "charStart": 76,
+      "charEnd": 86
+    },
+    {
+      "text": "specializing",
+      "start": 6.7875,
+      "end": 7.4625,
+      "charStart": 87,
+      "charEnd": 99
+    },
+    {
+      "text": "in",
+      "start": 7.475,
+      "end": 7.5875,
+      "charStart": 100,
+      "charEnd": 102
+    },
+    {
+      "text": "enterprise",
+      "start": 7.6125,
+      "end": 8.15,
+      "charStart": 103,
+      "charEnd": 113
+    },
+    {
+      "text": "systems",
+      "start": 8.175,
+      "end": 8.65,
+      "charStart": 114,
+      "charEnd": 121
+    },
+    {
+      "text": "and",
+      "start": 8.675,
+      "end": 8.8,
+      "charStart": 122,
+      "charEnd": 125
+    },
+    {
+      "text": "operational",
+      "start": 8.825,
+      "end": 9.4625,
+      "charStart": 126,
+      "charEnd": 137
+    },
+    {
+      "text": "optimization",
+      "start": 9.4875,
+      "end": 10.275,
+      "charStart": 138,
+      "charEnd": 150
+    },
+    {
+      "text": "With",
+      "start": 11.15,
+      "end": 11.3375,
+      "charStart": 152,
+      "charEnd": 156
+    },
+    {
+      "text": "a",
+      "start": 11.3625,
+      "end": 11.425,
+      "charStart": 157,
+      "charEnd": 158
+    },
+    {
+      "text": "solid",
+      "start": 11.45,
+      "end": 11.8,
+      "charStart": 159,
+      "charEnd": 164
+    },
+    {
+      "text": "foundation",
+      "start": 11.825,
+      "end": 12.375,
+      "charStart": 165,
+      "charEnd": 175
+    },
+    {
+      "text": "in",
+      "start": 12.4,
+      "end": 12.5125,
+      "charStart": 176,
+      "charEnd": 178
+    },
+    {
+      "text": "web",
+      "start": 12.5375,
+      "end": 12.75,
+      "charStart": 179,
+      "charEnd": 182
+    },
+    {
+      "text": "application",
+      "start": 12.775,
+      "end": 13.3875,
+      "charStart": 183,
+      "charEnd": 194
+    },
+    {
+      "text": "architecture",
+      "start": 13.4125,
+      "end": 14.025,
+      "charStart": 195,
+      "charEnd": 207
+    },
+    {
+      "text": "and",
+      "start": 14.05,
+      "end": 14.1375,
+      "charStart": 208,
+      "charEnd": 211
+    },
+    {
+      "text": "advanced",
+      "start": 14.1625,
+      "end": 14.5625,
+      "charStart": 212,
+      "charEnd": 220
+    },
+    {
+      "text": "modular",
+      "start": 14.5875,
+      "end": 15.025,
+      "charStart": 221,
+      "charEnd": 228
+    },
+    {
+      "text": "development",
+      "start": 15.05,
+      "end": 15.625,
+      "charStart": 229,
+      "charEnd": 240
+    },
+    {
+      "text": "I",
+      "start": 15.875,
+      "end": 15.9375,
+      "charStart": 242,
+      "charEnd": 243
+    },
+    {
+      "text": "combine",
+      "start": 15.9625,
+      "end": 16.325,
+      "charStart": 244,
+      "charEnd": 251
+    },
+    {
+      "text": "technical",
+      "start": 16.35,
+      "end": 16.825,
+      "charStart": 252,
+      "charEnd": 261
+    },
+    {
+      "text": "logic",
+      "start": 16.85,
+      "end": 17.225,
+      "charStart": 262,
+      "charEnd": 267
+    },
+    {
+      "text": "with",
+      "start": 17.25,
+      "end": 17.375,
+      "charStart": 268,
+      "charEnd": 272
+    },
+    {
+      "text": "the",
+      "start": 17.4,
+      "end": 17.4875,
+      "charStart": 273,
+      "charEnd": 276
+    },
+    {
+      "text": "ability",
+      "start": 17.5,
+      "end": 17.95,
+      "charStart": 277,
+      "charEnd": 284
+    },
+    {
+      "text": "to",
+      "start": 17.975,
+      "end": 18.0875,
+      "charStart": 285,
+      "charEnd": 287
+    },
+    {
+      "text": "bring",
+      "start": 18.1125,
+      "end": 18.3375,
+      "charStart": 288,
+      "charEnd": 293
+    },
+    {
+      "text": "complex",
+      "start": 18.35,
+      "end": 18.8625,
+      "charStart": 294,
+      "charEnd": 301
+    },
+    {
+      "text": "business",
+      "start": 18.875,
+      "end": 19.25,
+      "charStart": 302,
+      "charEnd": 310
+    },
+    {
+      "text": "solutions",
+      "start": 19.275,
+      "end": 19.8,
+      "charStart": 311,
+      "charEnd": 320
+    },
+    {
+      "text": "to",
+      "start": 19.825,
+      "end": 19.925,
+      "charStart": 321,
+      "charEnd": 323
+    },
+    {
+      "text": "life",
+      "start": 19.95,
+      "end": 20.375,
+      "charStart": 324,
+      "charEnd": 328
+    },
+    {
+      "text": "Beyond",
+      "start": 21.2625,
+      "end": 21.625,
+      "charStart": 331,
+      "charEnd": 337
+    },
+    {
+      "text": "my",
+      "start": 21.65,
+      "end": 21.7625,
+      "charStart": 338,
+      "charEnd": 340
+    },
+    {
+      "text": "core",
+      "start": 21.7875,
+      "end": 22.0,
+      "charStart": 341,
+      "charEnd": 345
+    },
+    {
+      "text": "technical",
+      "start": 22.0125,
+      "end": 22.475,
+      "charStart": 346,
+      "charEnd": 355
+    },
+    {
+      "text": "expertise",
+      "start": 22.5,
+      "end": 23.1375,
+      "charStart": 356,
+      "charEnd": 365
+    },
+    {
+      "text": "I",
+      "start": 23.375,
+      "end": 23.4375,
+      "charStart": 367,
+      "charEnd": 368
+    },
+    {
+      "text": "have",
+      "start": 23.4625,
+      "end": 23.5875,
+      "charStart": 369,
+      "charEnd": 373
+    },
+    {
+      "text": "a",
+      "start": 23.6,
+      "end": 23.675,
+      "charStart": 374,
+      "charEnd": 375
+    },
+    {
+      "text": "deep",
+      "start": 23.7,
+      "end": 23.9125,
+      "charStart": 376,
+      "charEnd": 380
+    },
+    {
+      "text": "passion",
+      "start": 23.925,
+      "end": 24.2875,
+      "charStart": 381,
+      "charEnd": 388
+    },
+    {
+      "text": "for",
+      "start": 24.3125,
+      "end": 24.4875,
+      "charStart": 389,
+      "charEnd": 392
+    },
+    {
+      "text": "artificial",
+      "start": 24.5125,
+      "end": 25.0375,
+      "charStart": 393,
+      "charEnd": 403
+    },
+    {
+      "text": "intelligence",
+      "start": 25.0625,
+      "end": 25.675,
+      "charStart": 404,
+      "charEnd": 416
+    },
+    {
+      "text": "AI",
+      "start": 25.8375,
+      "end": 26.2625,
+      "charStart": 418,
+      "charEnd": 420
+    },
+    {
+      "text": "and",
+      "start": 26.45,
+      "end": 26.6,
+      "charStart": 422,
+      "charEnd": 425
+    },
+    {
+      "text": "modern",
+      "start": 26.625,
+      "end": 26.9375,
+      "charStart": 426,
+      "charEnd": 432
+    },
+    {
+      "text": "development",
+      "start": 26.9625,
+      "end": 27.475,
+      "charStart": 433,
+      "charEnd": 444
+    },
+    {
+      "text": "workflows",
+      "start": 27.4875,
+      "end": 28.1,
+      "charStart": 445,
+      "charEnd": 454
+    },
+    {
+      "text": "I",
+      "start": 28.9875,
+      "end": 29.15,
+      "charStart": 456,
+      "charEnd": 457
+    },
+    {
+      "text": "actively",
+      "start": 29.175,
+      "end": 29.5875,
+      "charStart": 458,
+      "charEnd": 466
+    },
+    {
+      "text": "integrate",
+      "start": 29.6125,
+      "end": 30.0125,
+      "charStart": 467,
+      "charEnd": 476
+    },
+    {
+      "text": "AI",
+      "start": 30.0375,
+      "end": 30.2875,
+      "charStart": 477,
+      "charEnd": 479
+    },
+    {
+      "text": "agents",
+      "start": 30.3125,
+      "end": 30.725,
+      "charStart": 480,
+      "charEnd": 486
+    },
+    {
+      "text": "LLMs",
+      "start": 30.8875,
+      "end": 31.4,
+      "charStart": 488,
+      "charEnd": 492
+    },
+    {
+      "text": "and",
+      "start": 31.6125,
+      "end": 31.75,
+      "charStart": 494,
+      "charEnd": 497
+    },
+    {
+      "text": "intelligent",
+      "start": 31.775,
+      "end": 32.3375,
+      "charStart": 498,
+      "charEnd": 509
+    },
+    {
+      "text": "tools",
+      "start": 32.3625,
+      "end": 32.6625,
+      "charStart": 510,
+      "charEnd": 515
+    },
+    {
+      "text": "into",
+      "start": 32.6875,
+      "end": 32.8375,
+      "charStart": 516,
+      "charEnd": 520
+    },
+    {
+      "text": "my",
+      "start": 32.8625,
+      "end": 32.975,
+      "charStart": 521,
+      "charEnd": 523
+    },
+    {
+      "text": "daily",
+      "start": 33.0,
+      "end": 33.3,
+      "charStart": 524,
+      "charEnd": 529
+    },
+    {
+      "text": "coding",
+      "start": 33.325,
+      "end": 33.6625,
+      "charStart": 530,
+      "charEnd": 536
+    },
+    {
+      "text": "routine",
+      "start": 33.6875,
+      "end": 34.0125,
+      "charStart": 537,
+      "charEnd": 544
+    },
+    {
+      "text": "to",
+      "start": 34.0375,
+      "end": 34.15,
+      "charStart": 545,
+      "charEnd": 547
+    },
+    {
+      "text": "accelerate",
+      "start": 34.1625,
+      "end": 34.725,
+      "charStart": 548,
+      "charEnd": 558
+    },
+    {
+      "text": "deployment",
+      "start": 34.7375,
+      "end": 35.25,
+      "charStart": 559,
+      "charEnd": 569
+    },
+    {
+      "text": "automate",
+      "start": 35.5,
+      "end": 35.8875,
+      "charStart": 571,
+      "charEnd": 579
+    },
+    {
+      "text": "tasks",
+      "start": 35.9125,
+      "end": 36.35,
+      "charStart": 580,
+      "charEnd": 585
+    },
+    {
+      "text": "and",
+      "start": 36.5,
+      "end": 36.65,
+      "charStart": 587,
+      "charEnd": 590
+    },
+    {
+      "text": "solve",
+      "start": 36.675,
+      "end": 36.9375,
+      "charStart": 591,
+      "charEnd": 596
+    },
+    {
+      "text": "complex",
+      "start": 36.95,
+      "end": 37.4125,
+      "charStart": 597,
+      "charEnd": 604
+    },
+    {
+      "text": "challenges",
+      "start": 37.4375,
+      "end": 37.9625,
+      "charStart": 605,
+      "charEnd": 615
+    },
+    {
+      "text": "with",
+      "start": 37.9875,
+      "end": 38.15,
+      "charStart": 616,
+      "charEnd": 620
+    },
+    {
+      "text": "maximum",
+      "start": 38.175,
+      "end": 38.6625,
+      "charStart": 621,
+      "charEnd": 628
+    },
+    {
+      "text": "efficiency",
+      "start": 38.6875,
+      "end": 39.375,
+      "charStart": 629,
+      "charEnd": 639
+    },
+    {
+      "text": "Currently",
+      "start": 40.2625,
+      "end": 40.6875,
+      "charStart": 642,
+      "charEnd": 651
+    },
+    {
+      "text": "contributing",
+      "start": 40.7125,
+      "end": 41.3125,
+      "charStart": 652,
+      "charEnd": 664
+    },
+    {
+      "text": "to",
+      "start": 41.325,
+      "end": 41.425,
+      "charStart": 665,
+      "charEnd": 667
+    },
+    {
+      "text": "the",
+      "start": 41.4375,
+      "end": 41.525,
+      "charStart": 668,
+      "charEnd": 671
+    },
+    {
+      "text": "development",
+      "start": 41.5375,
+      "end": 42.0625,
+      "charStart": 672,
+      "charEnd": 683
+    },
+    {
+      "text": "of",
+      "start": 42.075,
+      "end": 42.1625,
+      "charStart": 684,
+      "charEnd": 686
+    },
+    {
+      "text": "core",
+      "start": 42.1875,
+      "end": 42.4,
+      "charStart": 687,
+      "charEnd": 691
+    },
+    {
+      "text": "modules",
+      "start": 42.4125,
+      "end": 42.8375,
+      "charStart": 692,
+      "charEnd": 699
+    },
+    {
+      "text": "within",
+      "start": 42.8625,
+      "end": 43.175,
+      "charStart": 700,
+      "charEnd": 706
+    },
+    {
+      "text": "HR",
+      "start": 43.2,
+      "end": 43.5625,
+      "charStart": 707,
+      "charEnd": 709
+    },
+    {
+      "text": "software",
+      "start": 43.5875,
+      "end": 44.025,
+      "charStart": 710,
+      "charEnd": 718
+    },
+    {
+      "text": "ecosystems",
+      "start": 44.05,
+      "end": 44.725,
+      "charStart": 719,
+      "charEnd": 729
+    },
+    {
+      "text": "such",
+      "start": 44.75,
+      "end": 44.9375,
+      "charStart": 730,
+      "charEnd": 734
+    },
+    {
+      "text": "as",
+      "start": 44.95,
+      "end": 45.075,
+      "charStart": 735,
+      "charEnd": 737
+    },
+    {
+      "text": "enterprise",
+      "start": 45.1,
+      "end": 45.625,
+      "charStart": 738,
+      "charEnd": 748
+    },
+    {
+      "text": "HRIS",
+      "start": 45.65,
+      "end": 46.2375,
+      "charStart": 749,
+      "charEnd": 753
+    },
+    {
+      "text": "systems",
+      "start": 46.2625,
+      "end": 46.7125,
+      "charStart": 754,
+      "charEnd": 761
+    },
+    {
+      "text": "I",
+      "start": 46.9875,
+      "end": 47.05,
+      "charStart": 763,
+      "charEnd": 764
+    },
+    {
+      "text": "continuously",
+      "start": 47.075,
+      "end": 47.775,
+      "charStart": 765,
+      "charEnd": 777
+    },
+    {
+      "text": "explore",
+      "start": 47.8,
+      "end": 48.175,
+      "charStart": 778,
+      "charEnd": 785
+    },
+    {
+      "text": "the",
+      "start": 48.2,
+      "end": 48.2875,
+      "charStart": 786,
+      "charEnd": 789
+    },
+    {
+      "text": "intersection",
+      "start": 48.3125,
+      "end": 48.875,
+      "charStart": 790,
+      "charEnd": 802
+    },
+    {
+      "text": "of",
+      "start": 48.9,
+      "end": 48.975,
+      "charStart": 803,
+      "charEnd": 805
+    },
+    {
+      "text": "software",
+      "start": 49.0,
+      "end": 49.4625,
+      "charStart": 806,
+      "charEnd": 814
+    },
+    {
+      "text": "engineering",
+      "start": 49.4875,
+      "end": 50.075,
+      "charStart": 815,
+      "charEnd": 826
+    },
+    {
+      "text": "and",
+      "start": 50.0875,
+      "end": 50.175,
+      "charStart": 827,
+      "charEnd": 830
+    },
+    {
+      "text": "AI",
+      "start": 50.1875,
+      "end": 50.5,
+      "charStart": 831,
+      "charEnd": 833
+    },
+    {
+      "text": "to",
+      "start": 50.525,
+      "end": 50.65,
+      "charStart": 834,
+      "charEnd": 836
+    },
+    {
+      "text": "create",
+      "start": 50.675,
+      "end": 50.975,
+      "charStart": 837,
+      "charEnd": 843
+    },
+    {
+      "text": "intelligent",
+      "start": 50.9875,
+      "end": 51.55,
+      "charStart": 844,
+      "charEnd": 855
+    },
+    {
+      "text": "automation",
+      "start": 51.575,
+      "end": 52.125,
+      "charStart": 856,
+      "charEnd": 866
+    },
+    {
+      "text": "solutions",
+      "start": 52.15,
+      "end": 52.675,
+      "charStart": 867,
+      "charEnd": 876
+    },
+    {
+      "text": "and",
+      "start": 52.7,
+      "end": 52.8,
+      "charStart": 877,
+      "charEnd": 880
+    },
+    {
+      "text": "build",
+      "start": 52.825,
+      "end": 53.05,
+      "charStart": 881,
+      "charEnd": 886
+    },
+    {
+      "text": "scalable",
+      "start": 53.0625,
+      "end": 53.575,
+      "charStart": 887,
+      "charEnd": 895
+    },
+    {
+      "text": "sustainable",
+      "start": 53.7375,
+      "end": 54.3125,
+      "charStart": 897,
+      "charEnd": 908
+    },
+    {
+      "text": "systems",
+      "start": 54.3375,
+      "end": 54.9125,
+      "charStart": 909,
+      "charEnd": 916
+    }
+  ]
+}

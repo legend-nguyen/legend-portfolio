@@ -1,0 +1,1394 @@
+{
+  "lang": "vi",
+  "voice": "vi-VN-NamMinhNeural",
+  "textHash": "cd44d090b8a1d4247c987dbb398cf64997e10b6d1ac03d9ae4ae9fe13eef2ef1",
+  "duration": 51.792,
+  "words": [
+    {
+      "text": "Xin",
+      "start": 0.1,
+      "end": 0.475,
+      "charStart": 0,
+      "charEnd": 3
+    },
+    {
+      "text": "chào",
+      "start": 0.475,
+      "end": 0.8125,
+      "charStart": 4,
+      "charEnd": 8
+    },
+    {
+      "text": "Tôi",
+      "start": 1.65,
+      "end": 1.9875,
+      "charStart": 10,
+      "charEnd": 13
+    },
+    {
+      "text": "là",
+      "start": 1.9875,
+      "end": 2.1375,
+      "charStart": 14,
+      "charEnd": 16
+    },
+    {
+      "text": "Nguyễn",
+      "start": 2.1375,
+      "end": 2.45,
+      "charStart": 17,
+      "charEnd": 23
+    },
+    {
+      "text": "Huyền",
+      "start": 2.45,
+      "end": 2.65,
+      "charStart": 24,
+      "charEnd": 29
+    },
+    {
+      "text": "Thoại",
+      "start": 2.65,
+      "end": 3.05,
+      "charStart": 30,
+      "charEnd": 35
+    },
+    {
+      "text": "Một",
+      "start": 3.8875,
+      "end": 4.225,
+      "charStart": 38,
+      "charEnd": 41
+    },
+    {
+      "text": "lập",
+      "start": 4.225,
+      "end": 4.4125,
+      "charStart": 42,
+      "charEnd": 45
+    },
+    {
+      "text": "trình",
+      "start": 4.4125,
+      "end": 4.6,
+      "charStart": 46,
+      "charEnd": 51
+    },
+    {
+      "text": "viên",
+      "start": 4.6,
+      "end": 4.8,
+      "charStart": 52,
+      "charEnd": 56
+    },
+    {
+      "text": "full-stack",
+      "start": 4.8,
+      "end": 5.2875,
+      "charStart": 57,
+      "charEnd": 67
+    },
+    {
+      "text": "hơn",
+      "start": 5.2875,
+      "end": 5.6,
+      "charStart": 68,
+      "charEnd": 71
+    },
+    {
+      "text": "5",
+      "start": 5.6,
+      "end": 5.825,
+      "charStart": 72,
+      "charEnd": 73
+    },
+    {
+      "text": "năm",
+      "start": 5.825,
+      "end": 6.0,
+      "charStart": 74,
+      "charEnd": 77
+    },
+    {
+      "text": "kinh",
+      "start": 6.0,
+      "end": 6.175,
+      "charStart": 78,
+      "charEnd": 82
+    },
+    {
+      "text": "nghiệm",
+      "start": 6.175,
+      "end": 6.4625,
+      "charStart": 83,
+      "charEnd": 89
+    },
+    {
+      "text": "chuyên",
+      "start": 6.4625,
+      "end": 6.6625,
+      "charStart": 90,
+      "charEnd": 96
+    },
+    {
+      "text": "phát",
+      "start": 6.6625,
+      "end": 6.8625,
+      "charStart": 97,
+      "charEnd": 101
+    },
+    {
+      "text": "triển",
+      "start": 6.8625,
+      "end": 7.0875,
+      "charStart": 102,
+      "charEnd": 107
+    },
+    {
+      "text": "hệ",
+      "start": 7.0875,
+      "end": 7.2375,
+      "charStart": 108,
+      "charEnd": 110
+    },
+    {
+      "text": "thống",
+      "start": 7.2375,
+      "end": 7.475,
+      "charStart": 111,
+      "charEnd": 116
+    },
+    {
+      "text": "doanh",
+      "start": 7.475,
+      "end": 7.625,
+      "charStart": 117,
+      "charEnd": 122
+    },
+    {
+      "text": "nghiệp",
+      "start": 7.625,
+      "end": 7.8875,
+      "charStart": 123,
+      "charEnd": 129
+    },
+    {
+      "text": "và",
+      "start": 7.8875,
+      "end": 8.0875,
+      "charStart": 130,
+      "charEnd": 132
+    },
+    {
+      "text": "tối",
+      "start": 8.0875,
+      "end": 8.3375,
+      "charStart": 133,
+      "charEnd": 136
+    },
+    {
+      "text": "ưu",
+      "start": 8.3375,
+      "end": 8.5125,
+      "charStart": 137,
+      "charEnd": 139
+    },
+    {
+      "text": "hóa",
+      "start": 8.5125,
+      "end": 8.75,
+      "charStart": 140,
+      "charEnd": 143
+    },
+    {
+      "text": "vận",
+      "start": 8.75,
+      "end": 8.95,
+      "charStart": 144,
+      "charEnd": 147
+    },
+    {
+      "text": "hành",
+      "start": 8.95,
+      "end": 9.1875,
+      "charStart": 148,
+      "charEnd": 152
+    },
+    {
+      "text": "Với",
+      "start": 10.025,
+      "end": 10.2625,
+      "charStart": 154,
+      "charEnd": 157
+    },
+    {
+      "text": "nền",
+      "start": 10.2625,
+      "end": 10.475,
+      "charStart": 158,
+      "charEnd": 161
+    },
+    {
+      "text": "tảng",
+      "start": 10.475,
+      "end": 10.7375,
+      "charStart": 162,
+      "charEnd": 166
+    },
+    {
+      "text": "vững",
+      "start": 10.7375,
+      "end": 10.925,
+      "charStart": 167,
+      "charEnd": 171
+    },
+    {
+      "text": "chắc",
+      "start": 10.925,
+      "end": 11.1625,
+      "charStart": 172,
+      "charEnd": 176
+    },
+    {
+      "text": "về",
+      "start": 11.1625,
+      "end": 11.325,
+      "charStart": 177,
+      "charEnd": 179
+    },
+    {
+      "text": "kiến",
+      "start": 11.325,
+      "end": 11.575,
+      "charStart": 180,
+      "charEnd": 184
+    },
+    {
+      "text": "trúc",
+      "start": 11.575,
+      "end": 11.8125,
+      "charStart": 185,
+      "charEnd": 189
+    },
+    {
+      "text": "ứng",
+      "start": 11.8125,
+      "end": 11.975,
+      "charStart": 190,
+      "charEnd": 193
+    },
+    {
+      "text": "dụng",
+      "start": 11.975,
+      "end": 12.1875,
+      "charStart": 194,
+      "charEnd": 198
+    },
+    {
+      "text": "web",
+      "start": 12.1875,
+      "end": 12.425,
+      "charStart": 199,
+      "charEnd": 202
+    },
+    {
+      "text": "và",
+      "start": 12.425,
+      "end": 12.625,
+      "charStart": 203,
+      "charEnd": 205
+    },
+    {
+      "text": "phát",
+      "start": 12.625,
+      "end": 12.825,
+      "charStart": 206,
+      "charEnd": 210
+    },
+    {
+      "text": "triển",
+      "start": 12.825,
+      "end": 13.0625,
+      "charStart": 211,
+      "charEnd": 216
+    },
+    {
+      "text": "phân",
+      "start": 13.0625,
+      "end": 13.2625,
+      "charStart": 217,
+      "charEnd": 221
+    },
+    {
+      "text": "hệ",
+      "start": 13.2625,
+      "end": 13.4125,
+      "charStart": 222,
+      "charEnd": 224
+    },
+    {
+      "text": "chuyên",
+      "start": 13.4125,
+      "end": 13.625,
+      "charStart": 225,
+      "charEnd": 231
+    },
+    {
+      "text": "sâu",
+      "start": 13.625,
+      "end": 13.9875,
+      "charStart": 232,
+      "charEnd": 235
+    },
+    {
+      "text": "tôi",
+      "start": 14.175,
+      "end": 14.4,
+      "charStart": 237,
+      "charEnd": 240
+    },
+    {
+      "text": "kết",
+      "start": 14.4,
+      "end": 14.5875,
+      "charStart": 241,
+      "charEnd": 244
+    },
+    {
+      "text": "hợp",
+      "start": 14.5875,
+      "end": 14.8125,
+      "charStart": 245,
+      "charEnd": 248
+    },
+    {
+      "text": "tư",
+      "start": 14.8125,
+      "end": 15.0,
+      "charStart": 249,
+      "charEnd": 251
+    },
+    {
+      "text": "duy",
+      "start": 15.0,
+      "end": 15.175,
+      "charStart": 252,
+      "charEnd": 255
+    },
+    {
+      "text": "logic",
+      "start": 15.175,
+      "end": 15.5875,
+      "charStart": 256,
+      "charEnd": 261
+    },
+    {
+      "text": "kỹ",
+      "start": 15.5875,
+      "end": 15.7375,
+      "charStart": 262,
+      "charEnd": 264
+    },
+    {
+      "text": "thuật",
+      "start": 15.7375,
+      "end": 15.9875,
+      "charStart": 265,
+      "charEnd": 270
+    },
+    {
+      "text": "cùng",
+      "start": 15.9875,
+      "end": 16.1875,
+      "charStart": 271,
+      "charEnd": 275
+    },
+    {
+      "text": "khả",
+      "start": 16.1875,
+      "end": 16.35,
+      "charStart": 276,
+      "charEnd": 279
+    },
+    {
+      "text": "năng",
+      "start": 16.35,
+      "end": 16.5375,
+      "charStart": 280,
+      "charEnd": 284
+    },
+    {
+      "text": "hiện",
+      "start": 16.5375,
+      "end": 16.7375,
+      "charStart": 285,
+      "charEnd": 289
+    },
+    {
+      "text": "thực",
+      "start": 16.7375,
+      "end": 16.8875,
+      "charStart": 290,
+      "charEnd": 294
+    },
+    {
+      "text": "hóa",
+      "start": 16.8875,
+      "end": 17.1375,
+      "charStart": 295,
+      "charEnd": 298
+    },
+    {
+      "text": "các",
+      "start": 17.1375,
+      "end": 17.3375,
+      "charStart": 299,
+      "charEnd": 302
+    },
+    {
+      "text": "giải",
+      "start": 17.3375,
+      "end": 17.5,
+      "charStart": 303,
+      "charEnd": 307
+    },
+    {
+      "text": "pháp",
+      "start": 17.5,
+      "end": 17.7375,
+      "charStart": 308,
+      "charEnd": 312
+    },
+    {
+      "text": "nghiệp",
+      "start": 17.7375,
+      "end": 17.9125,
+      "charStart": 313,
+      "charEnd": 319
+    },
+    {
+      "text": "vụ",
+      "start": 17.9125,
+      "end": 18.1,
+      "charStart": 320,
+      "charEnd": 322
+    },
+    {
+      "text": "phức",
+      "start": 18.1,
+      "end": 18.3,
+      "charStart": 323,
+      "charEnd": 327
+    },
+    {
+      "text": "tạp",
+      "start": 18.3,
+      "end": 18.6,
+      "charStart": 328,
+      "charEnd": 331
+    },
+    {
+      "text": "Bên",
+      "start": 19.4375,
+      "end": 19.7125,
+      "charStart": 334,
+      "charEnd": 337
+    },
+    {
+      "text": "cạnh",
+      "start": 19.7125,
+      "end": 19.9375,
+      "charStart": 338,
+      "charEnd": 342
+    },
+    {
+      "text": "chuyên",
+      "start": 19.9375,
+      "end": 20.125,
+      "charStart": 343,
+      "charEnd": 349
+    },
+    {
+      "text": "môn",
+      "start": 20.125,
+      "end": 20.325,
+      "charStart": 350,
+      "charEnd": 353
+    },
+    {
+      "text": "kỹ",
+      "start": 20.325,
+      "end": 20.4875,
+      "charStart": 354,
+      "charEnd": 356
+    },
+    {
+      "text": "thuật",
+      "start": 20.4875,
+      "end": 20.7875,
+      "charStart": 357,
+      "charEnd": 362
+    },
+    {
+      "text": "tôi",
+      "start": 20.975,
+      "end": 21.2,
+      "charStart": 364,
+      "charEnd": 367
+    },
+    {
+      "text": "có",
+      "start": 21.2,
+      "end": 21.325,
+      "charStart": 368,
+      "charEnd": 370
+    },
+    {
+      "text": "niềm",
+      "start": 21.325,
+      "end": 21.55,
+      "charStart": 371,
+      "charEnd": 375
+    },
+    {
+      "text": "đam",
+      "start": 21.55,
+      "end": 21.7375,
+      "charStart": 376,
+      "charEnd": 379
+    },
+    {
+      "text": "mê",
+      "start": 21.7375,
+      "end": 21.8875,
+      "charStart": 380,
+      "charEnd": 382
+    },
+    {
+      "text": "sâu",
+      "start": 21.8875,
+      "end": 22.1,
+      "charStart": 383,
+      "charEnd": 386
+    },
+    {
+      "text": "sắc",
+      "start": 22.1,
+      "end": 22.3375,
+      "charStart": 387,
+      "charEnd": 390
+    },
+    {
+      "text": "với",
+      "start": 22.3375,
+      "end": 22.4625,
+      "charStart": 391,
+      "charEnd": 394
+    },
+    {
+      "text": "trí",
+      "start": 22.4625,
+      "end": 22.6625,
+      "charStart": 395,
+      "charEnd": 398
+    },
+    {
+      "text": "tuệ",
+      "start": 22.6625,
+      "end": 22.875,
+      "charStart": 399,
+      "charEnd": 402
+    },
+    {
+      "text": "nhân",
+      "start": 22.875,
+      "end": 23.125,
+      "charStart": 403,
+      "charEnd": 407
+    },
+    {
+      "text": "tạo",
+      "start": 23.125,
+      "end": 23.5375,
+      "charStart": 408,
+      "charEnd": 411
+    },
+    {
+      "text": "AI",
+      "start": 23.7125,
+      "end": 24.2125,
+      "charStart": 413,
+      "charEnd": 415
+    },
+    {
+      "text": "và",
+      "start": 24.375,
+      "end": 24.625,
+      "charStart": 417,
+      "charEnd": 419
+    },
+    {
+      "text": "các",
+      "start": 24.625,
+      "end": 24.8,
+      "charStart": 420,
+      "charEnd": 423
+    },
+    {
+      "text": "quy",
+      "start": 24.8,
+      "end": 24.925,
+      "charStart": 424,
+      "charEnd": 427
+    },
+    {
+      "text": "trình",
+      "start": 24.925,
+      "end": 25.15,
+      "charStart": 428,
+      "charEnd": 433
+    },
+    {
+      "text": "phát",
+      "start": 25.15,
+      "end": 25.325,
+      "charStart": 434,
+      "charEnd": 438
+    },
+    {
+      "text": "triển",
+      "start": 25.325,
+      "end": 25.5625,
+      "charStart": 439,
+      "charEnd": 444
+    },
+    {
+      "text": "hiện",
+      "start": 25.5625,
+      "end": 25.775,
+      "charStart": 445,
+      "charEnd": 449
+    },
+    {
+      "text": "đại",
+      "start": 25.775,
+      "end": 26.0875,
+      "charStart": 450,
+      "charEnd": 453
+    },
+    {
+      "text": "Tôi",
+      "start": 26.925,
+      "end": 27.1875,
+      "charStart": 455,
+      "charEnd": 458
+    },
+    {
+      "text": "tích",
+      "start": 27.1875,
+      "end": 27.4125,
+      "charStart": 459,
+      "charEnd": 463
+    },
+    {
+      "text": "cực",
+      "start": 27.4125,
+      "end": 27.6375,
+      "charStart": 464,
+      "charEnd": 467
+    },
+    {
+      "text": "ứng",
+      "start": 27.6375,
+      "end": 27.8,
+      "charStart": 468,
+      "charEnd": 471
+    },
+    {
+      "text": "dụng",
+      "start": 27.8,
+      "end": 28.0875,
+      "charStart": 472,
+      "charEnd": 476
+    },
+    {
+      "text": "AI",
+      "start": 28.0875,
+      "end": 28.4375,
+      "charStart": 477,
+      "charEnd": 479
+    },
+    {
+      "text": "agents",
+      "start": 28.4375,
+      "end": 28.95,
+      "charStart": 480,
+      "charEnd": 486
+    },
+    {
+      "text": "LLMs",
+      "start": 29.1125,
+      "end": 29.85,
+      "charStart": 488,
+      "charEnd": 492
+    },
+    {
+      "text": "và",
+      "start": 29.85,
+      "end": 30.0375,
+      "charStart": 493,
+      "charEnd": 495
+    },
+    {
+      "text": "các",
+      "start": 30.0375,
+      "end": 30.225,
+      "charStart": 496,
+      "charEnd": 499
+    },
+    {
+      "text": "công",
+      "start": 30.225,
+      "end": 30.3875,
+      "charStart": 500,
+      "charEnd": 504
+    },
+    {
+      "text": "cụ",
+      "start": 30.3875,
+      "end": 30.5625,
+      "charStart": 505,
+      "charEnd": 507
+    },
+    {
+      "text": "thông",
+      "start": 30.5625,
+      "end": 30.7625,
+      "charStart": 508,
+      "charEnd": 513
+    },
+    {
+      "text": "minh",
+      "start": 30.7625,
+      "end": 31.0,
+      "charStart": 514,
+      "charEnd": 518
+    },
+    {
+      "text": "vào",
+      "start": 31.0,
+      "end": 31.125,
+      "charStart": 519,
+      "charEnd": 522
+    },
+    {
+      "text": "quy",
+      "start": 31.125,
+      "end": 31.3,
+      "charStart": 523,
+      "charEnd": 526
+    },
+    {
+      "text": "trình",
+      "start": 31.3,
+      "end": 31.5125,
+      "charStart": 527,
+      "charEnd": 532
+    },
+    {
+      "text": "lập",
+      "start": 31.5125,
+      "end": 31.7,
+      "charStart": 533,
+      "charEnd": 536
+    },
+    {
+      "text": "trình",
+      "start": 31.7,
+      "end": 31.875,
+      "charStart": 537,
+      "charEnd": 542
+    },
+    {
+      "text": "hàng",
+      "start": 31.875,
+      "end": 32.025,
+      "charStart": 543,
+      "charEnd": 547
+    },
+    {
+      "text": "ngày",
+      "start": 32.025,
+      "end": 32.3,
+      "charStart": 548,
+      "charEnd": 552
+    },
+    {
+      "text": "giúp",
+      "start": 32.4875,
+      "end": 32.7125,
+      "charStart": 554,
+      "charEnd": 558
+    },
+    {
+      "text": "tăng",
+      "start": 32.7125,
+      "end": 32.925,
+      "charStart": 559,
+      "charEnd": 563
+    },
+    {
+      "text": "tốc",
+      "start": 32.925,
+      "end": 33.1,
+      "charStart": 564,
+      "charEnd": 567
+    },
+    {
+      "text": "độ",
+      "start": 33.1,
+      "end": 33.25,
+      "charStart": 568,
+      "charEnd": 570
+    },
+    {
+      "text": "triển",
+      "start": 33.25,
+      "end": 33.4625,
+      "charStart": 571,
+      "charEnd": 576
+    },
+    {
+      "text": "khai",
+      "start": 33.4625,
+      "end": 33.8375,
+      "charStart": 577,
+      "charEnd": 581
+    },
+    {
+      "text": "tự",
+      "start": 34.0125,
+      "end": 34.1625,
+      "charStart": 583,
+      "charEnd": 585
+    },
+    {
+      "text": "động",
+      "start": 34.1625,
+      "end": 34.4,
+      "charStart": 586,
+      "charEnd": 590
+    },
+    {
+      "text": "hóa",
+      "start": 34.4,
+      "end": 34.6,
+      "charStart": 591,
+      "charEnd": 594
+    },
+    {
+      "text": "tác",
+      "start": 34.6,
+      "end": 34.7875,
+      "charStart": 595,
+      "charEnd": 598
+    },
+    {
+      "text": "vụ",
+      "start": 34.7875,
+      "end": 35.0125,
+      "charStart": 599,
+      "charEnd": 601
+    },
+    {
+      "text": "và",
+      "start": 35.0125,
+      "end": 35.15,
+      "charStart": 602,
+      "charEnd": 604
+    },
+    {
+      "text": "giải",
+      "start": 35.15,
+      "end": 35.325,
+      "charStart": 605,
+      "charEnd": 609
+    },
+    {
+      "text": "quyết",
+      "start": 35.325,
+      "end": 35.525,
+      "charStart": 610,
+      "charEnd": 615
+    },
+    {
+      "text": "bài",
+      "start": 35.525,
+      "end": 35.675,
+      "charStart": 616,
+      "charEnd": 619
+    },
+    {
+      "text": "toán",
+      "start": 35.675,
+      "end": 35.9,
+      "charStart": 620,
+      "charEnd": 624
+    },
+    {
+      "text": "phức",
+      "start": 35.9,
+      "end": 36.0875,
+      "charStart": 625,
+      "charEnd": 629
+    },
+    {
+      "text": "tạp",
+      "start": 36.0875,
+      "end": 36.3375,
+      "charStart": 630,
+      "charEnd": 633
+    },
+    {
+      "text": "với",
+      "start": 36.3375,
+      "end": 36.4625,
+      "charStart": 634,
+      "charEnd": 637
+    },
+    {
+      "text": "hiệu",
+      "start": 36.4625,
+      "end": 36.65,
+      "charStart": 638,
+      "charEnd": 642
+    },
+    {
+      "text": "suất",
+      "start": 36.65,
+      "end": 36.85,
+      "charStart": 643,
+      "charEnd": 647
+    },
+    {
+      "text": "cao",
+      "start": 36.85,
+      "end": 37.05,
+      "charStart": 648,
+      "charEnd": 651
+    },
+    {
+      "text": "nhất",
+      "start": 37.05,
+      "end": 37.2875,
+      "charStart": 652,
+      "charEnd": 656
+    },
+    {
+      "text": "Hiện",
+      "start": 38.125,
+      "end": 38.4125,
+      "charStart": 659,
+      "charEnd": 663
+    },
+    {
+      "text": "đang",
+      "start": 38.4125,
+      "end": 38.575,
+      "charStart": 664,
+      "charEnd": 668
+    },
+    {
+      "text": "tham",
+      "start": 38.575,
+      "end": 38.7625,
+      "charStart": 669,
+      "charEnd": 673
+    },
+    {
+      "text": "gia",
+      "start": 38.7625,
+      "end": 38.925,
+      "charStart": 674,
+      "charEnd": 677
+    },
+    {
+      "text": "phát",
+      "start": 38.925,
+      "end": 39.1125,
+      "charStart": 678,
+      "charEnd": 682
+    },
+    {
+      "text": "triển",
+      "start": 39.1125,
+      "end": 39.35,
+      "charStart": 683,
+      "charEnd": 688
+    },
+    {
+      "text": "các",
+      "start": 39.35,
+      "end": 39.4875,
+      "charStart": 689,
+      "charEnd": 692
+    },
+    {
+      "text": "phân",
+      "start": 39.4875,
+      "end": 39.6625,
+      "charStart": 693,
+      "charEnd": 697
+    },
+    {
+      "text": "hệ",
+      "start": 39.6625,
+      "end": 39.8125,
+      "charStart": 698,
+      "charEnd": 700
+    },
+    {
+      "text": "cốt",
+      "start": 39.8125,
+      "end": 40.0375,
+      "charStart": 701,
+      "charEnd": 704
+    },
+    {
+      "text": "lõi",
+      "start": 40.0375,
+      "end": 40.3,
+      "charStart": 705,
+      "charEnd": 708
+    },
+    {
+      "text": "tại",
+      "start": 40.3,
+      "end": 40.475,
+      "charStart": 709,
+      "charEnd": 712
+    },
+    {
+      "text": "hệ",
+      "start": 40.475,
+      "end": 40.6,
+      "charStart": 713,
+      "charEnd": 715
+    },
+    {
+      "text": "sinh",
+      "start": 40.6,
+      "end": 40.8,
+      "charStart": 716,
+      "charEnd": 720
+    },
+    {
+      "text": "thái",
+      "start": 40.8,
+      "end": 40.9875,
+      "charStart": 721,
+      "charEnd": 725
+    },
+    {
+      "text": "phần",
+      "start": 40.9875,
+      "end": 41.1875,
+      "charStart": 726,
+      "charEnd": 730
+    },
+    {
+      "text": "mềm",
+      "start": 41.1875,
+      "end": 41.3875,
+      "charStart": 731,
+      "charEnd": 734
+    },
+    {
+      "text": "nhân",
+      "start": 41.3875,
+      "end": 41.6,
+      "charStart": 735,
+      "charEnd": 739
+    },
+    {
+      "text": "sự",
+      "start": 41.6,
+      "end": 41.8375,
+      "charStart": 740,
+      "charEnd": 742
+    },
+    {
+      "text": "như",
+      "start": 41.8375,
+      "end": 42.025,
+      "charStart": 743,
+      "charEnd": 746
+    },
+    {
+      "text": "hệ",
+      "start": 42.025,
+      "end": 42.1625,
+      "charStart": 747,
+      "charEnd": 749
+    },
+    {
+      "text": "thống",
+      "start": 42.1625,
+      "end": 42.425,
+      "charStart": 750,
+      "charEnd": 755
+    },
+    {
+      "text": "HRIS",
+      "start": 42.425,
+      "end": 43.3,
+      "charStart": 756,
+      "charEnd": 760
+    },
+    {
+      "text": "doanh",
+      "start": 43.3,
+      "end": 43.525,
+      "charStart": 761,
+      "charEnd": 766
+    },
+    {
+      "text": "nghiệp",
+      "start": 43.525,
+      "end": 43.8,
+      "charStart": 767,
+      "charEnd": 773
+    },
+    {
+      "text": "tôi",
+      "start": 44.0125,
+      "end": 44.2625,
+      "charStart": 775,
+      "charEnd": 778
+    },
+    {
+      "text": "luôn",
+      "start": 44.2625,
+      "end": 44.4625,
+      "charStart": 779,
+      "charEnd": 783
+    },
+    {
+      "text": "không",
+      "start": 44.4625,
+      "end": 44.65,
+      "charStart": 784,
+      "charEnd": 789
+    },
+    {
+      "text": "ngừng",
+      "start": 44.65,
+      "end": 44.8625,
+      "charStart": 790,
+      "charEnd": 795
+    },
+    {
+      "text": "khám",
+      "start": 44.8625,
+      "end": 45.1,
+      "charStart": 796,
+      "charEnd": 800
+    },
+    {
+      "text": "phá",
+      "start": 45.1,
+      "end": 45.3,
+      "charStart": 801,
+      "charEnd": 804
+    },
+    {
+      "text": "giao",
+      "start": 45.3,
+      "end": 45.4875,
+      "charStart": 805,
+      "charEnd": 809
+    },
+    {
+      "text": "thoa",
+      "start": 45.4875,
+      "end": 45.6875,
+      "charStart": 810,
+      "charEnd": 814
+    },
+    {
+      "text": "giữa",
+      "start": 45.6875,
+      "end": 45.8875,
+      "charStart": 815,
+      "charEnd": 819
+    },
+    {
+      "text": "công",
+      "start": 45.8875,
+      "end": 46.05,
+      "charStart": 820,
+      "charEnd": 824
+    },
+    {
+      "text": "nghệ",
+      "start": 46.05,
+      "end": 46.225,
+      "charStart": 825,
+      "charEnd": 829
+    },
+    {
+      "text": "phần",
+      "start": 46.225,
+      "end": 46.4375,
+      "charStart": 830,
+      "charEnd": 834
+    },
+    {
+      "text": "mềm",
+      "start": 46.4375,
+      "end": 46.7,
+      "charStart": 835,
+      "charEnd": 838
+    },
+    {
+      "text": "và",
+      "start": 46.7,
+      "end": 46.85,
+      "charStart": 839,
+      "charEnd": 841
+    },
+    {
+      "text": "AI",
+      "start": 46.85,
+      "end": 47.3,
+      "charStart": 842,
+      "charEnd": 844
+    },
+    {
+      "text": "để",
+      "start": 47.3,
+      "end": 47.4375,
+      "charStart": 845,
+      "charEnd": 847
+    },
+    {
+      "text": "kiến",
+      "start": 47.4375,
+      "end": 47.6625,
+      "charStart": 848,
+      "charEnd": 852
+    },
+    {
+      "text": "tạo",
+      "start": 47.6625,
+      "end": 47.8625,
+      "charStart": 853,
+      "charEnd": 856
+    },
+    {
+      "text": "các",
+      "start": 47.8625,
+      "end": 48.0375,
+      "charStart": 857,
+      "charEnd": 860
+    },
+    {
+      "text": "giải",
+      "start": 48.0375,
+      "end": 48.2,
+      "charStart": 861,
+      "charEnd": 865
+    },
+    {
+      "text": "pháp",
+      "start": 48.2,
+      "end": 48.4375,
+      "charStart": 866,
+      "charEnd": 870
+    },
+    {
+      "text": "tự",
+      "start": 48.4375,
+      "end": 48.5875,
+      "charStart": 871,
+      "charEnd": 873
+    },
+    {
+      "text": "động",
+      "start": 48.5875,
+      "end": 48.8125,
+      "charStart": 874,
+      "charEnd": 878
+    },
+    {
+      "text": "hóa",
+      "start": 48.8125,
+      "end": 49.025,
+      "charStart": 879,
+      "charEnd": 882
+    },
+    {
+      "text": "thông",
+      "start": 49.025,
+      "end": 49.225,
+      "charStart": 883,
+      "charEnd": 888
+    },
+    {
+      "text": "minh",
+      "start": 49.225,
+      "end": 49.4875,
+      "charStart": 889,
+      "charEnd": 893
+    },
+    {
+      "text": "và",
+      "start": 49.4875,
+      "end": 49.65,
+      "charStart": 894,
+      "charEnd": 896
+    },
+    {
+      "text": "xây",
+      "start": 49.65,
+      "end": 49.825,
+      "charStart": 897,
+      "charEnd": 900
+    },
+    {
+      "text": "dựng",
+      "start": 49.825,
+      "end": 50.05,
+      "charStart": 901,
+      "charEnd": 905
+    },
+    {
+      "text": "hệ",
+      "start": 50.05,
+      "end": 50.1875,
+      "charStart": 906,
+      "charEnd": 908
+    },
+    {
+      "text": "thống",
+      "start": 50.1875,
+      "end": 50.4125,
+      "charStart": 909,
+      "charEnd": 914
+    },
+    {
+      "text": "bền",
+      "start": 50.4125,
+      "end": 50.5875,
+      "charStart": 915,
+      "charEnd": 918
+    },
+    {
+      "text": "vững",
+      "start": 50.5875,
+      "end": 50.9375,
+      "charStart": 919,
+      "charEnd": 923
+    }
+  ]
+}
