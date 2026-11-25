@@ -34,11 +34,10 @@ export const knowledge: readonly KnowledgeEntry[] = [
   },
   {
     type: "EXPERIENCE",
-    title: "Kinh nghiệm & Học vấn (Nguồn: trang /about)",
+    title: "Kinh nghiệm làm việc (Nguồn: trang /about)",
     content:
       "- EMS Corporation: Senior Software Engineer (Thg 11 2020 – Hiện tại). Thiết kế, phát triển và tối ưu các phân hệ cốt lõi trong hệ thống HRIS doanh nghiệp.\n" +
-      "- DV Software: Intern Software Engineer (Thg 2 2020 – Thg 6 2020).\n" +
-      "- Học vấn: Cao Thang Technical College — Cử nhân Công nghệ thông tin (2017 – 2020).",
+      "- DV Software: Intern Software Engineer (Thg 2 2020 – Thg 6 2020).",
     url: "/about",
   },
   {
@@ -99,7 +98,7 @@ export const knowledge: readonly KnowledgeEntry[] = [
     content:
       "/: Trang chủ (giới thiệu tổng quan, điểm nổi bật về kinh nghiệm/AI/stack, các phân hệ HRIS tiêu biểu và thẻ liên hệ). " +
       "/projects: Danh sách chi tiết các dự án doanh nghiệp & hệ thống HRIS (có bộ lọc theo nhóm và modal xem chi tiết vai trò, tác động, công nghệ). " +
-      "/about: Tổng quan (địa điểm, kinh nghiệm, vị trí, trọng tâm), giới thiệu chi tiết (có nút nghe audio), kinh nghiệm, học vấn, chuyên môn và stack công nghệ tương tác.",
+      "/about: Tổng quan (địa điểm, kinh nghiệm, vị trí, trọng tâm), giới thiệu chi tiết (có nút nghe audio), kinh nghiệm làm việc, chuyên môn và stack công nghệ tương tác.",
   },
   {
     type: "FAQ",
