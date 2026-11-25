@@ -374,8 +374,7 @@ export function SplitText({
             } else if (hoverEffect === "wave") {
               targets.forEach((other, otherIdx) => {
                 const distance = Math.abs(otherIdx - idx);
-                const lift =
-                  distance <= 3 ? -8 * Math.exp(-distance * 0.6) : 0;
+                const lift = distance <= 3 ? -8 * Math.exp(-distance * 0.6) : 0;
                 gsap.to(other, {
                   y: lift,
                   duration: 0.25,
@@ -511,7 +510,7 @@ export function SplitText({
       return (
         <span
           key={token.key}
-          className="inline-block whitespace-nowrap align-baseline"
+          className="inline-block align-baseline whitespace-nowrap"
         >
           {token.chars.map((char, charIdx) => (
             <span

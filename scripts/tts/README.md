@@ -44,4 +44,3 @@ python scripts/tts/generate_tts.py --en-voice en-US-GuyNeural --vi-voice vi-VN-N
 # Kiểm tra tính toàn vẹn của file âm thanh và textHash
 npm run tts:check
 ```
-

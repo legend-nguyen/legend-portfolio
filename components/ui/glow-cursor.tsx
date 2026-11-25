@@ -46,8 +46,10 @@ export const DEFAULT_GLOW_IGNORE_SELECTOR = [
   "[data-glow-block]",
 ].join(", ");
 
-export interface GlowCursorProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "color" | "children"> {
+export interface GlowCursorProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "color" | "children"
+> {
   color?: string;
   secondaryColor?: string | undefined;
   intensity?: number;
@@ -949,7 +951,11 @@ export function GlowCursor({
       pair.swap();
     };
 
-    const toGrid = (vx: number, vy: number, targets: SimulationTargets): Vec2 => {
+    const toGrid = (
+      vx: number,
+      vy: number,
+      targets: SimulationTargets
+    ): Vec2 => {
       const { velocity } = targets;
       return [
         (vx * velocity.read.width) / state.width,
@@ -985,12 +991,10 @@ export function GlowCursor({
         const h = dt / steps;
         for (let k = 0; k < steps; k++) {
           emitter.vx +=
-            (omega * omega * (pointer.x - emitter.x) -
-              2 * omega * emitter.vx) *
+            (omega * omega * (pointer.x - emitter.x) - 2 * omega * emitter.vx) *
             h;
           emitter.vy +=
-            (omega * omega * (pointer.y - emitter.y) -
-              2 * omega * emitter.vy) *
+            (omega * omega * (pointer.y - emitter.y) - 2 * omega * emitter.vy) *
             h;
           emitter.x += emitter.vx * h;
           emitter.y += emitter.vy * h;
@@ -1061,7 +1065,17 @@ export function GlowCursor({
             Math.sin(angle + 0.6) * 760,
             targets
           );
-          splat(velocity, ax, ay, bx, by, 18, [target[0], target[1], 0], 1, 0.9);
+          splat(
+            velocity,
+            ax,
+            ay,
+            bx,
+            by,
+            18,
+            [target[0], target[1], 0],
+            1,
+            0.9
+          );
         }
         splat(
           dye,
@@ -1271,7 +1285,10 @@ export function GlowCursor({
         }
         gl.disable(gl.BLEND);
       }
-      const u = activatePass(passes.display, [1 / canvas.width, 1 / canvas.height]);
+      const u = activatePass(passes.display, [
+        1 / canvas.width,
+        1 / canvas.height,
+      ]);
       gl.uniform1i(uniformLoc(u, "uDye"), bind(0, dye.read));
       gl.uniform1i(uniformLoc(u, "uBloom"), bind(1, bloom0));
       setShade(u, s);

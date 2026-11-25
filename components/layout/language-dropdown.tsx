@@ -1,11 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n";
-import {
-  LANGUAGE_OPTIONS,
-  Language,
-  TRANSLATION_KEYS,
-} from "@/shared/i18n";
+import { LANGUAGE_OPTIONS, Language, TRANSLATION_KEYS } from "@/shared/i18n";
 import { Check, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -85,9 +81,7 @@ export function LanguageDropdown(): ReactNode {
       }
       case "ArrowUp": {
         event.preventDefault();
-        openMenuWithIndex(
-          open ? activeIndex - 1 : LANGUAGE_OPTIONS.length - 1
-        );
+        openMenuWithIndex(open ? activeIndex - 1 : LANGUAGE_OPTIONS.length - 1);
         break;
       }
       case "Escape": {
@@ -163,12 +157,12 @@ export function LanguageDropdown(): ReactNode {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listboxId}
-        className="focus-ring inline-flex h-8 cursor-pointer items-center gap-1 rounded-full bg-background px-2.5 text-xs font-medium tracking-tight text-foreground ring-1 ring-foreground/8 transition-colors hover:bg-foreground/5"
+        className="focus-ring type-meta text-text-secondary hover:bg-surface-2 hover:text-foreground inline-flex h-8 cursor-pointer items-center gap-1 rounded-full px-2.5 font-medium transition-colors duration-200"
       >
         <span>{currentOption?.label}</span>
         <ChevronDown
           aria-hidden="true"
-          className={`h-3.5 w-3.5 text-foreground/60 transition-transform duration-200 ${
+          className={`text-text-muted h-3.5 w-3.5 transition-transform duration-200 ${
             open ? "rotate-180" : "rotate-0"
           }`}
         />
@@ -185,7 +179,7 @@ export function LanguageDropdown(): ReactNode {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -4, scale: 0.96 }}
             transition={{ duration: 0.16, ease: EASE }}
-            className="absolute right-0 top-full z-50 mt-2 min-w-28 origin-top-right rounded-2xl border border-foreground/8 bg-background p-1 shadow-lg"
+            className="border-border-hairline bg-surface-1/95 absolute top-full right-0 z-50 mt-2.5 min-w-28 origin-top-right rounded-xl border p-1 shadow-lg backdrop-blur-md"
           >
             {LANGUAGE_OPTIONS.map((option, index) => {
               const isSelected = option.value === language;
@@ -203,16 +197,16 @@ export function LanguageDropdown(): ReactNode {
                     })}
                     onClick={() => selectLanguage(option.value)}
                     onMouseEnter={() => setActiveIndex(index)}
-                    className={`focus-ring flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                    className={`focus-ring type-meta flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 font-medium transition-colors ${
                       isSelected
-                        ? "bg-foreground/6 text-foreground"
-                        : "text-foreground/70 hover:bg-foreground/4 hover:text-foreground"
+                        ? "bg-surface-2 text-foreground dark:bg-surface-3"
+                        : "text-text-secondary hover:bg-surface-2 hover:text-foreground"
                     }`}
                   >
                     <span>{option.label}</span>
                     {isSelected && (
                       <Check
-                        className="h-3.5 w-3.5 text-foreground"
+                        className="text-foreground h-3.5 w-3.5"
                         aria-hidden="true"
                       />
                     )}
@@ -226,4 +220,3 @@ export function LanguageDropdown(): ReactNode {
     </div>
   );
 }
-

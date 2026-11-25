@@ -44,11 +44,7 @@ function resolveKey(
   let current: unknown = dictionary;
 
   for (const segment of segments) {
-    if (
-      typeof current === "object" &&
-      current !== null &&
-      segment in current
-    ) {
+    if (typeof current === "object" && current !== null && segment in current) {
       current = (current as Record<string, unknown>)[segment];
     } else {
       return key;
@@ -95,4 +91,3 @@ export type {
   TranslationDictionary,
   TranslationKey,
 };
-

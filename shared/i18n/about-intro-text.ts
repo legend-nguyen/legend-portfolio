@@ -1,7 +1,4 @@
-import type {
-  TranslationDictionary,
-  TranslationKey,
-} from "./translation-keys";
+import type { TranslationDictionary, TranslationKey } from "./translation-keys";
 
 export type IntroSegmentKind = "plain" | "underline" | "strong";
 
@@ -54,7 +51,7 @@ export function sha256Hex(input: string): string {
   const bitLenHi = Math.floor((bytes.length * 8) / 0x100000000);
   const bitLenLo = (bytes.length * 8) >>> 0;
 
-  const paddedLength = (((bytes.length + 9 + 63) >> 6) << 6);
+  const paddedLength = ((bytes.length + 9 + 63) >> 6) << 6;
   const buffer = new Uint8Array(paddedLength);
   buffer.set(bytes);
   buffer[bytes.length] = 0x80;

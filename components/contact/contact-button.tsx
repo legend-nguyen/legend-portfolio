@@ -31,7 +31,7 @@ export function ContactButton(): ReactNode {
         document.execCommand("copy");
         setCopied(true);
         window.setTimeout(() => setCopied(false), 1600);
-      } catch { }
+      } catch {}
       document.body.removeChild(ta);
     }
   };
@@ -52,9 +52,9 @@ export function ContactButton(): ReactNode {
             ? t(TRANSLATION_KEYS.contact.copyEmail, { email: EMAIL })
             : t(TRANSLATION_KEYS.contact.showEmail)
       }
-      transition={{ layout: { duration: 0.55, ease: EASE } }}
-      style={{ borderRadius: 12 }}
-      className="focus-ring relative inline-flex h-11 cursor-pointer items-center justify-center bg-foreground px-5 text-sm font-medium text-background"
+      transition={{ layout: { duration: 0.45, ease: EASE } }}
+      style={{ borderRadius: 9999 }}
+      className="focus-ring type-label bg-foreground text-background relative inline-flex h-10 cursor-pointer items-center justify-center px-4.5 transition-opacity duration-200 hover:opacity-90 active:scale-[0.98]"
     >
       <motion.span
         layout="position"

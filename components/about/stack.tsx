@@ -8,27 +8,41 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 type Chip = {
   label: string;
   slug: string;
-  bg: string;
-  fg: string;
+  iconColor?: string;
   iconUrl?: string;
+  invertInDark?: boolean;
 };
 
-const CHIPS: Chip[] = [
-  { label: "React", slug: "react", bg: "#1FB6CB", fg: "#ffffff" },
-  { label: "Next.js", slug: "nextdotjs", bg: "#1f1f1f", fg: "#ffffff" },
-  { label: "TypeScript", slug: "typescript", bg: "#2F74C0", fg: "#ffffff" },
-  { label: "GSAP", slug: "gsap", bg: "#0AE448", fg: "#0a0a0a" },
-  { label: "GitHub", slug: "github", bg: "#181717", fg: "#ffffff" },
-  { label: "Claude", slug: "claude", bg: "#181717", fg: "#ffffff" },
-  { label: ".NET", slug: "dotnet", bg: "#512BD4", fg: "#ffffff" },
-  { label: "JavaScript", slug: "javascript", bg: "#EFD81D", fg: "#0a0a0a" },
-  { label: "Angular", slug: "angular", bg: "#dd0330", fg: "#ffffff" },
-  { label: "C# / LINQ / SQL Server", slug: "csharp", bg: "#181717", fg: "#ffffff", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
-  { label: "Tailwind CSS", slug: "tailwindcss", bg: "#2BBCF5", fg: "#ffffff" },
+const CHIPS: readonly Chip[] = [
+  { label: "React", slug: "react", iconColor: "00D8FF" },
+  {
+    label: "Next.js",
+    slug: "nextdotjs",
+    iconColor: "09090b",
+    invertInDark: true,
+  },
+  { label: "TypeScript", slug: "typescript", iconColor: "3178C6" },
+  { label: ".NET Core", slug: "dotnet", iconColor: "6D4AFF" },
+  {
+    label: "C# & SQL Server",
+    slug: "csharp",
+    iconUrl:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+  },
+  { label: "Tailwind CSS", slug: "tailwindcss", iconColor: "06B6D4" },
+  { label: "GSAP", slug: "gsap", iconColor: "16A34A" },
+  { label: "Angular", slug: "angular", iconColor: "DD0031" },
+  { label: "JavaScript", slug: "javascript", iconColor: "EAB308" },
+  {
+    label: "GitHub",
+    slug: "github",
+    iconColor: "09090b",
+    invertInDark: true,
+  },
+  { label: "Claude", slug: "claude", iconColor: "D97757" },
 ];
 
-const CHIP_RADIUS = 14;
-const ICON_RADIUS = 10;
+const CHIP_RADIUS = 9999;
 const WALL_PAD = 16;
 
 type ChipState = {
@@ -71,7 +85,7 @@ export function Stack(): ReactNode {
       const measureChildren = Array.from(measure.children) as HTMLElement[];
       const dims = measureChildren.map((el) => {
         const r = el.getBoundingClientRect();
-        return { w: Math.max(80, r.width), h: Math.max(28, r.height) };
+        return { w: Math.max(84, r.width), h: Math.max(36, r.height) };
       });
 
       let width = container.clientWidth;
@@ -112,14 +126,14 @@ export function Stack(): ReactNode {
         const minX = WALL_PAD + halfW + 4;
         const maxX = width - WALL_PAD - halfW - 4;
         const x = minX + Math.random() * Math.max(1, maxX - minX);
-        const y = -80 - i * 60 - Math.random() * 120;
+        const y = -60 - i * 52 - Math.random() * 90;
         const body = Bodies.rectangle(x, y, w, h, {
-          chamfer: { radius: CHIP_RADIUS },
+          chamfer: { radius: Math.floor(h / 2) },
           restitution: 0.35,
           friction: 0.5,
           frictionAir: 0.025,
           density: 0.0018,
-          angle: (Math.random() - 0.5) * 0.4,
+          angle: (Math.random() - 0.5) * 0.35,
         });
         World.add(world, body);
         return { chip, body, width: w, height: h };
@@ -209,30 +223,28 @@ export function Stack(): ReactNode {
   }, [resetKey]);
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-3">
-        <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
+    <section className="border-border-hairline bg-surface-1 hover:border-border-subtle overflow-hidden rounded-2xl border transition-colors duration-300">
+      <div className="border-border-hairline flex items-center justify-between border-b px-6 py-4">
+        <h2 className="type-label text-foreground">
           {t(TRANSLATION_KEYS.about.stack.title)}
-        </h3>
-      </div>
+        </h2>
 
-      <div
-        data-glow-block
-        className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative h-40 overflow-hidden rounded-4xl border sm:h-64"
-      >
         <button
           type="button"
           onClick={() => setResetKey((k) => k + 1)}
           aria-label={t(TRANSLATION_KEYS.about.stack.resetAriaLabel)}
-          className="focus-ring border-foreground/8 bg-background text-foreground/70 hover:text-foreground absolute top-3 right-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-xl border transition-colors"
+          title={t(TRANSLATION_KEYS.about.stack.resetAriaLabel)}
+          className="focus-ring border-border-hairline bg-surface-2 text-text-secondary hover:border-border-subtle hover:bg-surface-3 hover:text-foreground inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200"
         >
           <RotateCcw
-            className="h-4 w-4"
-            strokeWidth={2.25}
+            className="h-3.5 w-3.5"
+            strokeWidth={2}
             aria-hidden="true"
           />
         </button>
+      </div>
 
+      <div className="relative h-52 overflow-hidden sm:h-60">
         <div
           ref={measureRef}
           aria-hidden="true"
@@ -263,31 +275,35 @@ export function Stack(): ReactNode {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
 function ChipPill({ chip }: { chip: Chip }): ReactNode {
+  const iconSrc =
+    chip.iconUrl ??
+    (chip.iconColor
+      ? `https://cdn.simpleicons.org/${chip.slug}/${chip.iconColor}`
+      : `https://cdn.simpleicons.org/${chip.slug}`);
+
   return (
     <div
-      className="dark:ring-1 dark:ring-white/15 inline-flex items-center gap-2 p-1 pr-2 text-[15px] font-medium tracking-tight sm:text-[16px]"
-      style={{
-        backgroundColor: chip.bg,
-        color: chip.fg,
-        borderRadius: `${CHIP_RADIUS}px`,
-      }}
+      className="type-label border-border-subtle bg-surface-2 text-foreground inline-flex h-9 items-center gap-2 border px-3.5 whitespace-nowrap"
+      style={{ borderRadius: `${CHIP_RADIUS}px` }}
     >
       <span
-        className="inline-flex h-8 w-8 items-center justify-center bg-white/95"
-        style={{ borderRadius: `${ICON_RADIUS}px` }}
+        className="inline-flex h-4 w-4 shrink-0 items-center justify-center"
         aria-hidden="true"
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={chip.iconUrl ?? `https://cdn.simpleicons.org/${chip.slug}`}
+          src={iconSrc}
           alt=""
-          width={18}
-          height={18}
-          className="h-5 w-5"
+          width={16}
+          height={16}
+          className={`h-4 w-4 object-contain ${
+            chip.invertInDark ? "dark:invert" : ""
+          }`}
           draggable={false}
         />
       </span>

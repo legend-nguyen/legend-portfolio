@@ -3,7 +3,7 @@
 import type { SpeechPlaybackStatus } from "@/hooks/use-speech-highlight";
 import { useTranslation } from "@/lib/i18n";
 import { TRANSLATION_KEYS } from "@/shared/i18n";
-import { Volume2, VolumeX } from "lucide-react";
+import { Pause, Volume2 } from "lucide-react";
 import type { ReactNode } from "react";
 
 export type ListenIntroButtonProps = {
@@ -26,29 +26,30 @@ export function ListenIntroButton({
   }
 
   const isLoading = status === "loading";
-  const label = isPlaying
+  const ariaLabel = isPlaying
     ? t(TRANSLATION_KEYS.about.stopListening)
     : t(TRANSLATION_KEYS.about.listenIntro);
+  const shortLabel = isPlaying
+    ? t(TRANSLATION_KEYS.about.pauseShort)
+    : t(TRANSLATION_KEYS.about.listenShort);
 
   return (
     <button
       type="button"
       onClick={onToggle}
       disabled={isLoading}
-      aria-label={label}
+      aria-label={ariaLabel}
       aria-pressed={isPlaying}
-      title={label}
+      title={ariaLabel}
       data-playing={isPlaying ? "true" : "false"}
-      className="focus-ring tts-listen-btn group absolute top-6 right-6 z-10 inline-flex min-h-10 min-w-10 cursor-pointer items-center justify-center gap-2 rounded-full border border-foreground/10 bg-background/80 px-3 py-2 text-foreground/75 shadow-xs backdrop-blur-sm transition-all duration-200 hover:border-foreground/20 hover:bg-foreground/5 hover:text-foreground disabled:cursor-wait disabled:opacity-50 sm:top-8 sm:right-8 data-[playing=true]:border-ring/40 data-[playing=true]:bg-ring/8 data-[playing=true]:text-foreground data-[playing=true]:shadow-[0_0_0_4px_color-mix(in_srgb,var(--ring)_12%,transparent)]"
+      className="focus-ring tts-listen-btn type-meta border-border-hairline bg-surface-2 text-foreground hover:border-border-subtle hover:bg-surface-3 data-[playing=true]:border-border-subtle data-[playing=true]:bg-surface-3 inline-flex h-8 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full border px-3 font-medium transition-colors duration-200 disabled:cursor-wait disabled:opacity-50"
     >
       {isPlaying ? (
         <>
-          <Volume2
-            className="size-4 shrink-0 text-ring transition-transform duration-200 group-hover:scale-105"
-            aria-hidden="true"
-          />
+          <Pause className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          <span>{shortLabel}</span>
           <span
-            className="tts-wave-bars inline-flex h-3.5 items-end gap-[2.5px]"
+            className="tts-wave-bars inline-flex h-3 items-end gap-[2px]"
             aria-hidden="true"
           >
             <span className="tts-wave-bar tts-wave-bar--1" />
@@ -58,12 +59,14 @@ export function ListenIntroButton({
           </span>
         </>
       ) : (
-        <VolumeX
-          className="size-4 shrink-0 transition-transform duration-200 group-hover:scale-105"
-          aria-hidden="true"
-        />
+        <>
+          <Volume2
+            className="text-text-secondary h-3.5 w-3.5 shrink-0"
+            aria-hidden="true"
+          />
+          <span>{shortLabel}</span>
+        </>
       )}
     </button>
   );
 }
-

@@ -20,7 +20,11 @@ function parseMessages(body: unknown): ChatMessage[] | null {
   for (const item of raw.slice(-MAX_MESSAGES)) {
     if (typeof item !== "object" || item === null) return null;
     const { role, content } = item as Record<string, unknown>;
-    if ((role !== "user" && role !== "assistant") || typeof content !== "string") return null;
+    if (
+      (role !== "user" && role !== "assistant") ||
+      typeof content !== "string"
+    )
+      return null;
     const text = content.trim().slice(0, MAX_CHARS);
     if (!text) return null;
     messages.push({ role, content: text });
@@ -35,7 +39,10 @@ function getIp(req: Request): string {
 export async function POST(req: Request): Promise<Response> {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    return Response.json({ error: "Chatbot chưa được cấu hình." }, { status: 500 });
+    return Response.json(
+      { error: "Chatbot chưa được cấu hình." },
+      { status: 500 }
+    );
   }
 
   const limit = rateLimit(getIp(req));
@@ -60,7 +67,10 @@ export async function POST(req: Request): Promise<Response> {
 
   const upstream = await fetch(GROQ_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
     body: JSON.stringify({
       // Kiểm tra tên model còn khả dụng tại console.groq.com/docs/models
       model: process.env.GROQ_MODEL ?? "openai/gpt-oss-20b",
@@ -75,7 +85,7 @@ export async function POST(req: Request): Promise<Response> {
   if (!upstream || !upstream.ok || !upstream.body) {
     return Response.json(
       { error: "Chatbot đang bận, vui lòng thử lại sau." },
-      { status: 502 },
+      { status: 502 }
     );
   }
 
@@ -122,7 +132,9 @@ export async function POST(req: Request): Promise<Response> {
   });
 
   return new Response(stream, {
-    headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-store",
+    },
   });
 }
-

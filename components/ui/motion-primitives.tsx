@@ -1,5 +1,6 @@
 "use client";
 
+import { useReducedMotion } from "@/lib/motion";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
@@ -8,7 +9,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 export function FadeIn({
   children,
   delay = 0,
-  duration = 0.8,
+  duration = 0.55,
   className,
 }: {
   children: ReactNode;
@@ -16,11 +17,15 @@ export function FadeIn({
   duration?: number;
   className?: string;
 }): ReactNode {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
+      initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration, delay, ease: EASE }}
+      transition={
+        prefersReducedMotion ? { duration: 0.01 } : { duration, delay, ease: EASE }
+      }
       className={className}
     >
       {children}
@@ -31,7 +36,7 @@ export function FadeIn({
 export function ScaleUnblur({
   children,
   delay = 0,
-  duration = 1,
+  duration = 0.65,
   className,
 }: {
   children: ReactNode;
@@ -39,11 +44,19 @@ export function ScaleUnblur({
   duration?: number;
   className?: string;
 }): ReactNode {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.7, filter: "blur(20px)" }}
+      initial={
+        prefersReducedMotion
+          ? { opacity: 0 }
+          : { opacity: 0, scale: 0.96, filter: "blur(8px)" }
+      }
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      transition={{ duration, delay, ease: EASE }}
+      transition={
+        prefersReducedMotion ? { duration: 0.01 } : { duration, delay, ease: EASE }
+      }
       style={{ transformOrigin: "center" }}
       className={className}
     >

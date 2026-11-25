@@ -6,16 +6,11 @@ import {
 } from "@/components/ui/glow-cursor";
 import { useReducedMotion } from "@/lib/motion";
 import { useTheme } from "next-themes";
-import {
-  useEffect,
-  useState,
-  useSyncExternalStore,
-  type ReactNode,
-} from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 
 const COARSE_POINTER_QUERY = "(hover: none) and (pointer: coarse)";
-const DEFAULT_DARK_COLOR = "#3b82f6";
-const DEFAULT_LIGHT_COLOR = "#0066ff";
+const MONOCHROME_DARK_COLOR = "#ffffff";
+const MONOCHROME_LIGHT_COLOR = "#18181b";
 
 function useIsMounted(): boolean {
   return useSyncExternalStore(
@@ -39,13 +34,6 @@ function getCoarsePointerServerSnapshot(): boolean {
   return true;
 }
 
-function readTokenColor(fallback: string): string {
-  const value = getComputedStyle(document.documentElement)
-    .getPropertyValue("--ring")
-    .trim();
-  return value || fallback;
-}
-
 export function GlowCursorBackdrop(): ReactNode {
   const mounted = useIsMounted();
   const isCoarseOrNoHover = useSyncExternalStore(
@@ -57,27 +45,6 @@ export function GlowCursorBackdrop(): ReactNode {
   const { resolvedTheme } = useTheme();
   const isLight = resolvedTheme === "light";
 
-  const [color, setColor] = useState<string>(DEFAULT_DARK_COLOR);
-
-  useEffect(() => {
-    if (!mounted || isCoarseOrNoHover || prefersReducedMotion) return;
-
-    const fallback = isLight ? DEFAULT_LIGHT_COLOR : DEFAULT_DARK_COLOR;
-    const syncColor = (): void => {
-      setColor(readTokenColor(fallback));
-    };
-
-    syncColor();
-
-    const observer = new MutationObserver(syncColor);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, [mounted, isCoarseOrNoHover, prefersReducedMotion, isLight]);
-
   if (!mounted || isCoarseOrNoHover || prefersReducedMotion) {
     return null;
   }
@@ -86,13 +53,13 @@ export function GlowCursorBackdrop(): ReactNode {
     <GlowCursor
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-0"
-      color={color}
+      color={isLight ? MONOCHROME_LIGHT_COLOR : MONOCHROME_DARK_COLOR}
       theme={isLight ? "light" : "dark"}
-      intensity={isLight ? 1.05 : 1.15}
-      trailWidth={4}
-      linger={0.95}
-      glow={isLight ? 1.0 : 1.15}
-      hotspot={isLight ? 0.45 : 0.65}
+      intensity={isLight ? 0.22 : 0.28}
+      trailWidth={3}
+      linger={0.85}
+      glow={isLight ? 0.3 : 0.38}
+      hotspot={isLight ? 0.15 : 0.22}
       grain={0}
       quality="medium"
       maxDevicePixelRatio={1.5}
@@ -100,4 +67,3 @@ export function GlowCursorBackdrop(): ReactNode {
     />
   );
 }
-

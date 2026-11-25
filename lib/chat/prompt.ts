@@ -3,7 +3,10 @@ import { OWNER_NAME, knowledge } from "./knowledge";
 
 function renderKnowledge(): string {
   return knowledge
-    .map((k) => `[${k.type}] ${k.title}${k.url ? ` (link: ${k.url})` : ""}\n${k.content}`)
+    .map(
+      (k) =>
+        `[${k.type}] ${k.title}${k.url ? ` (link: ${k.url})` : ""}\n${k.content}`
+    )
     .join("\n\n");
 }
 
@@ -22,4 +25,3 @@ QUY TẮC:
 NGỮ CẢNH:
 ${renderKnowledge()}`;
 }
-

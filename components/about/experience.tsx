@@ -1,182 +1,107 @@
 "use client";
 
+import { FadeIn } from "@/components/ui/motion-primitives";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { useTranslation } from "@/lib/i18n";
 import { TRANSLATION_KEYS, type TranslationKey } from "@/shared/i18n";
-import { ChevronDown } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type Entry = {
   id: string;
   companyKey: TranslationKey;
   roleKey: TranslationKey;
   periodKey: TranslationKey;
-  slug?: string;
-  brand?: string;
+  logo: string;
+  current?: boolean;
 };
 
-const ENTRIES: Entry[] = [
+const ENTRIES: readonly Entry[] = [
   {
     id: "emsc",
     companyKey: TRANSLATION_KEYS.about.experience.items.emsc.company,
     roleKey: TRANSLATION_KEYS.about.experience.items.emsc.role,
     periodKey: TRANSLATION_KEYS.about.experience.items.emsc.period,
-    slug: "/images/about/logo_emsc.png",
-    brand: "#5E6AD2",
+    logo: "/images/about/logo_emsc.png",
+    current: true,
   },
   {
     id: "dvs",
     companyKey: TRANSLATION_KEYS.about.experience.items.dvs.company,
     roleKey: TRANSLATION_KEYS.about.experience.items.dvs.role,
     periodKey: TRANSLATION_KEYS.about.experience.items.dvs.period,
-    slug: "/images/about/logo_dvs.png",
-    brand: "#0a0a0a",
-  }
+    logo: "/images/about/logo_dvs.png",
+  },
 ];
-
-const COLLAPSED_COUNT = 2.5;
-const ROW_HEIGHT = 64;
-const ROW_GAP = 8;
 
 export function Experience(): ReactNode {
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
-  const collapsedHeight =
-    Math.floor(COLLAPSED_COUNT) * ROW_HEIGHT +
-    Math.floor(COLLAPSED_COUNT) * ROW_GAP +
-    (COLLAPSED_COUNT % 1) * ROW_HEIGHT;
-  const hiddenCount = ENTRIES.length - Math.floor(COLLAPSED_COUNT);
 
   return (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-foreground text-[15px] font-semibold tracking-tight">
-        {t(TRANSLATION_KEYS.about.experience.title)}
-      </h3>
-      <div
-        data-glow-block
-        className={`border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative overflow-hidden rounded-4xl border px-2 pt-2 sm:px-4 sm:pt-4 ${open ? "pb-2 sm:pb-4" : "pb-0"
-          }`}
-      >
-        <motion.div
-          className="relative"
-          initial={false}
-          animate={{
-            height: open ? "auto" : collapsedHeight,
-          }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          style={{ overflow: "hidden" }}
-        >
-          <ul className="flex flex-col gap-2">
+    <FadeIn delay={0.16} duration={0.55} className="h-full">
+      <SpotlightCard as="section" radius={320} className="h-full p-6 sm:p-7">
+        <div className="flex h-full flex-col gap-6">
+          <h2 className="type-label text-foreground">
+            {t(TRANSLATION_KEYS.about.experience.title)}
+          </h2>
+
+          {/* Crisp vertical hairline timeline */}
+          <ol className="relative flex flex-1 flex-col justify-center gap-6 pl-5">
+            <span
+              aria-hidden="true"
+              className="bg-border-hairline absolute top-3 bottom-3 left-[4.5px] w-px"
+            />
+
             {ENTRIES.map((entry) => {
               const company = t(entry.companyKey);
               return (
                 <li
                   key={entry.id}
-                  className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-2"
-                  style={{ minHeight: ROW_HEIGHT }}
+                  className="relative flex items-start gap-3.5"
                 >
-                  <CompanyLogo entry={entry} companyName={company} />
-                  <div className="flex min-w-0 flex-col">
-                    <span className="text-foreground text-[17px] font-semibold tracking-tight sm:text-[18px]">
-                      {company}
-                    </span>
-                    <span className="text-foreground/65 mt-0.5 text-[14px] tracking-tight sm:text-[15px]">
-                      {t(entry.roleKey)}
-                      <span className="text-foreground/30 mx-2">•</span>
-                      <span className="text-foreground/55">
+                  {/* Timeline node dot */}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute top-4 -left-5 h-2.5 w-2.5 rounded-full border ${
+                      entry.current
+                        ? "border-foreground bg-foreground"
+                        : "border-border-subtle bg-surface-1"
+                    }`}
+                  />
+
+                  <span
+                    className="border-border-hairline inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border bg-white p-1.5"
+                    aria-hidden="true"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={entry.logo}
+                      alt=""
+                      width={28}
+                      height={28}
+                      className="h-full w-full object-contain"
+                      draggable={false}
+                    />
+                  </span>
+
+                  <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                      <span className="text-foreground type-body font-medium">
+                        {company}
+                      </span>
+                      <span className="type-meta text-text-muted">
                         {t(entry.periodKey)}
                       </span>
+                    </div>
+                    <span className="text-text-secondary type-body">
+                      {t(entry.roleKey)}
                     </span>
                   </div>
                 </li>
               );
             })}
-          </ul>
-        </motion.div>
-
-        <AnimatePresence>
-          {!open && (
-            <motion.div
-              key="fade"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 bottom-0"
-              style={{
-                height: ROW_HEIGHT,
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                maskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 80%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 80%)",
-              }}
-            />
-          )}
-        </AnimatePresence>
-
-        {hiddenCount > 0 && (
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            className={`focus-ring text-foreground flex w-full cursor-pointer items-center justify-center gap-1.5 bg-transparent text-[15px] font-medium tracking-tight ${open
-              ? "relative mt-4"
-              : "absolute inset-x-0 bottom-0 z-10 py-3 sm:py-4"
-              }`}
-          >
-            {open
-              ? t(TRANSLATION_KEYS.about.experience.showLess)
-              : t(TRANSLATION_KEYS.about.experience.showMore, {
-                count: hiddenCount,
-              })}
-            <motion.span
-              animate={{ rotate: open ? 180 : 0 }}
-              transition={{ duration: 0.25 }}
-              className="inline-flex"
-            >
-              <ChevronDown className="h-4 w-4" aria-hidden="true" />
-            </motion.span>
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function CompanyLogo({
-  entry,
-  companyName,
-}: {
-  entry: Entry;
-  companyName: string;
-}): ReactNode {
-  const initials = companyName.charAt(0);
-  return (
-    <span
-      className="ring-foreground/8 inline-flex h-12 w-12 shrink-0 items-center justify-center bg-white ring-1 dark:ring-white/10"
-      aria-hidden="true"
-      style={{
-        borderRadius: 14,
-        ...(entry.slug ? {} : { backgroundColor: entry.brand }),
-      }}
-    >
-      {entry.slug ? (
-        <img
-          src={`${entry.slug}`}
-          alt=""
-          width={24}
-          height={24}
-          className="h-10 w-10"
-          draggable={false}
-        />
-      ) : (
-        <span className="text-[18px] font-semibold tracking-tight text-white">
-          {initials}
-        </span>
-      )}
-    </span>
+          </ol>
+        </div>
+      </SpotlightCard>
+    </FadeIn>
   );
 }

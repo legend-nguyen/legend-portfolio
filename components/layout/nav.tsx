@@ -2,20 +2,14 @@
 
 import { LanguageDropdown } from "@/components/layout/language-dropdown";
 import { useTranslation } from "@/lib/i18n";
+import { useReducedMotion } from "@/lib/motion";
 import { TRANSLATION_KEYS, type TranslationKey } from "@/shared/i18n";
 import { Moon, Sun } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-  type ReactNode,
-} from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 
 type NavItem = {
   labelKey: TranslationKey;
@@ -30,7 +24,7 @@ const NAV_ITEMS: readonly NavItem[] = [
 
 function useIsMounted(): boolean {
   return useSyncExternalStore(
-    () => () => { },
+    () => () => {},
     () => true,
     () => false
   );
@@ -93,20 +87,22 @@ function NavThemeToggle(): ReactNode {
           : t(TRANSLATION_KEYS.theme.toggle)
       }
       aria-pressed={mounted ? isDark : undefined}
-      className="focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-background ring-1 ring-foreground/8 transition-colors"
+      className="focus-ring text-text-secondary hover:bg-surface-2 hover:text-foreground relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-colors duration-200"
     >
       <span aria-hidden="true" className="relative h-4 w-4">
         <Sun
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${mounted && isDark
-              ? "rotate-0 scale-100 opacity-100"
-              : "-rotate-90 scale-0 opacity-0"
-            }`}
+          className={`absolute inset-0 h-4 w-4 text-current transition-[transform,opacity] duration-250 ease-out ${
+            mounted && isDark
+              ? "scale-100 rotate-0 opacity-100"
+              : "scale-75 -rotate-45 opacity-0"
+          }`}
         />
         <Moon
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${mounted && !isDark
-              ? "rotate-0 scale-100 opacity-100"
-              : "rotate-90 scale-0 opacity-0"
-            }`}
+          className={`absolute inset-0 h-4 w-4 text-current transition-[transform,opacity] duration-250 ease-out ${
+            mounted && !isDark
+              ? "scale-100 rotate-0 opacity-100"
+              : "scale-75 rotate-45 opacity-0"
+          }`}
         />
       </span>
     </button>
@@ -115,14 +111,8 @@ function NavThemeToggle(): ReactNode {
 
 export function Nav(): ReactNode {
   const pathname = usePathname();
-  const { language, t } = useTranslation();
-  const listRef = useRef<HTMLUListElement>(null);
-  const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
-  const [pillRect, setPillRect] = useState<{
-    x: number;
-    width: number;
-  } | null>(null);
-  const [hasMeasured, setHasMeasured] = useState(false);
+  const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
 
   const activeIndex = NAV_ITEMS.findIndex((item) =>
     item.href === "/"
@@ -130,69 +120,39 @@ export function Nav(): ReactNode {
       : pathname === item.href || pathname.startsWith(`${item.href}/`)
   );
 
-  useLayoutEffect(() => {
-    const list = listRef.current;
-    const activeEl =
-      activeIndex >= 0 ? itemRefs.current[activeIndex] : null;
-    if (!list || !activeEl) {
-      setPillRect(null);
-      return;
-    }
-    const listRect = list.getBoundingClientRect();
-    const itemRect = activeEl.getBoundingClientRect();
-    setPillRect({
-      x: itemRect.left - listRect.left,
-      width: itemRect.width,
-    });
-  }, [activeIndex, pathname, language]);
-
-  useEffect(() => {
-    if (!pillRect) return;
-    const id = requestAnimationFrame(() => setHasMeasured(true));
-    return () => cancelAnimationFrame(id);
-  }, [pillRect]);
-
   return (
     <nav
       aria-label={t(TRANSLATION_KEYS.nav.ariaLabel)}
-      className="fixed left-1/2 top-6 z-50 -translate-x-1/2"
+      className="fixed top-4 left-1/2 z-50 -translate-x-1/2 sm:top-5"
     >
-      <div className="flex items-center gap-1 rounded-full bg-background p-1.5 shadow-sm border border-foreground/8">
-        <ul ref={listRef} className="relative flex items-center gap-1">
-          {pillRect && (
-            <motion.span
-              aria-hidden="true"
-              initial={false}
-              animate={{ x: pillRect.x, width: pillRect.width }}
-              transition={
-                hasMeasured
-                  ? { type: "spring", stiffness: 380, damping: 32 }
-                  : { duration: 0 }
-              }
-              style={{ left: 0, top: 0, bottom: 0 }}
-              className="absolute rounded-full bg-foreground/5 ring-1 ring-foreground/8"
-            />
-          )}
+      <div className="border-border-hairline bg-canvas/85 dark:bg-surface-1/85 flex items-center gap-1 rounded-full border p-1 shadow-[0_4px_20px_-8px_rgb(0_0_0/0.12)] backdrop-blur-md dark:shadow-[0_8px_28px_-10px_rgb(0_0_0/0.75)]">
+        <ul className="relative flex items-center gap-0.5">
           {NAV_ITEMS.map((item, index) => {
             const isActive = index === activeIndex;
             return (
-              <li
-                key={item.href}
-                ref={(el) => {
-                  itemRefs.current[index] = el;
-                }}
-                className="relative"
-              >
+              <li key={item.href} className="relative">
                 <Link
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
-                  className="focus-ring relative inline-flex cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300"
+                  className="focus-ring type-label relative inline-flex h-8 cursor-pointer items-center justify-center rounded-full px-3.5 transition-colors duration-200"
                 >
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-pill"
+                      aria-hidden="true"
+                      transition={
+                        prefersReducedMotion
+                          ? { duration: 0 }
+                          : { type: "spring", stiffness: 420, damping: 34 }
+                      }
+                      className="border-border-subtle bg-surface-2 dark:bg-surface-3 absolute inset-0 rounded-full border"
+                    />
+                  )}
                   <span
                     className={
                       isActive
-                        ? "relative z-10 whitespace-nowrap text-foreground"
-                        : "relative z-10 whitespace-nowrap text-foreground/60 hover:text-foreground"
+                        ? "text-foreground relative z-10 whitespace-nowrap"
+                        : "text-text-secondary hover:text-foreground relative z-10 whitespace-nowrap transition-colors duration-200"
                     }
                   >
                     {t(item.labelKey)}
@@ -202,7 +162,19 @@ export function Nav(): ReactNode {
             );
           })}
         </ul>
+
+        <span
+          aria-hidden="true"
+          className="bg-border-hairline mx-0.5 h-4 w-px shrink-0"
+        />
+
         <LanguageDropdown />
+
+        <span
+          aria-hidden="true"
+          className="bg-border-hairline mx-0.5 h-4 w-px shrink-0"
+        />
+
         <NavThemeToggle />
       </div>
     </nav>

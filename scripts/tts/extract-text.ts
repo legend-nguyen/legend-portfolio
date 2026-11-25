@@ -33,4 +33,3 @@ writeFileSync(outputPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
 console.log(
   `[tts:extract] Wrote canonical about.intro text (en=${enDoc.fullText.length} chars, vi=${viDoc.fullText.length} chars) -> ${outputPath}`
 );
-

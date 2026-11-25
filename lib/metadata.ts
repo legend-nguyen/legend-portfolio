@@ -1,8 +1,4 @@
-import {
-  DEFAULT_LANGUAGE,
-  TRANSLATION_KEYS,
-  translate,
-} from "@/shared/i18n";
+import { DEFAULT_LANGUAGE, TRANSLATION_KEYS, translate } from "@/shared/i18n";
 import type { Metadata } from "next";
 
 export const siteConfig = {

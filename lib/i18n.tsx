@@ -125,4 +125,3 @@ export function useTranslation(): LanguageContextValue {
       translate(DEFAULT_LANGUAGE, key, params),
   };
 }
-

@@ -2,11 +2,7 @@ import { ContactCard } from "@/components/contact/contact-card";
 import { Projects } from "@/components/projects/projects";
 import { ProjectsHeader } from "@/components/projects/projects-header";
 import { createMetadata } from "@/lib/metadata";
-import {
-  DEFAULT_LANGUAGE,
-  TRANSLATION_KEYS,
-  translate,
-} from "@/shared/i18n";
+import { DEFAULT_LANGUAGE, TRANSLATION_KEYS, translate } from "@/shared/i18n";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 

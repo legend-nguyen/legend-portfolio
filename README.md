@@ -49,16 +49,16 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run lint:fix` | Fix ESLint errors |
-| `npm run format` | Format code with Prettier |
-| `npm run format:check` | Check code formatting |
-| `npm run typecheck` | Run TypeScript type checking |
+| Command                | Description                  |
+| ---------------------- | ---------------------------- |
+| `npm run dev`          | Start development server     |
+| `npm run build`        | Build for production         |
+| `npm run start`        | Start production server      |
+| `npm run lint`         | Run ESLint                   |
+| `npm run lint:fix`     | Fix ESLint errors            |
+| `npm run format`       | Format code with Prettier    |
+| `npm run format:check` | Check code formatting        |
+| `npm run typecheck`    | Run TypeScript type checking |
 
 ## Project Structure
 
@@ -118,6 +118,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### 1. Update Site Configuration
 
 Edit `lib/metadata.ts` to update:
+
 - Site name, description, and URL
 - Social media handles
 - Keywords and authors
@@ -147,6 +148,7 @@ Edit the project array in `components/projects/projects.tsx`. Each entry include
 ### 5. Replace Icons
 
 Replace the following files with your brand assets:
+
 - `app/icon.svg` — Favicon (32x32)
 - `app/apple-icon.svg` — Apple touch icon (180x180)
 - `public/og-image.png` — Open Graph image (1200x630)
@@ -163,6 +165,7 @@ The flow shader (`components/shaders/shader-flow.tsx`) is used by both the page 
 - `fadeCx`, `fadeCy`, `fadeRx`, `fadeRy` — aspect-correct circular fade center and radii. The fade is baked into the fragment shader and reads `--background` from CSS so theme changes are picked up automatically via a `MutationObserver` on `<html>`.
 
 The shader:
+
 - Caps DPR at `min(devicePixelRatio, 1.25)` for `ShaderFlow`
 - Sizes to host container via `ResizeObserver`
 - Pauses via `IntersectionObserver` when offscreen and on `visibilitychange`
@@ -215,6 +218,7 @@ The palette is strict black and white. No accent or semantic color hues are used
 ## Accessibility
 
 The template includes:
+
 - Skip-to-content link
 - Visible focus rings on all interactive elements
 - ARIA labels on toggles, social links, and the contact button
@@ -243,5 +247,6 @@ The template includes:
 ## License
 
 This template is free to use in personal and commercial projects. You may not resell or redistribute the template itself.
-#   l e g e n d - p o r t f o l i o  
+#   l e g e n d - p o r t f o l i o 
+ 
  

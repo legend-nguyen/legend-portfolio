@@ -2,6 +2,7 @@
 
 import { ListenIntroButton } from "@/components/about/listen-intro-button";
 import { FadeIn } from "@/components/ui/motion-primitives";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import {
   useSpeechHighlight,
   type TtsWordTimestamp,
@@ -50,10 +51,7 @@ function renderSegmentContent(
 
     parts.push(
       <span key={`w-${i}`} data-word-index={i} className="tts-word">
-        {segment.text.slice(
-          start - segment.charStart,
-          end - segment.charStart
-        )}
+        {segment.text.slice(start - segment.charStart, end - segment.charStart)}
       </span>
     );
 
@@ -75,7 +73,7 @@ function renderSegment(
 
   if (segment.kind === "underline") {
     return (
-      <span key={segment.id} className="border-b border-foreground/30 pb-0.5">
+      <span key={segment.id} className="border-foreground/30 border-b pb-0.5">
         {content}
       </span>
     );
@@ -83,7 +81,7 @@ function renderSegment(
 
   if (segment.kind === "strong") {
     return (
-      <strong key={segment.id} className="font-semibold text-foreground">
+      <strong key={segment.id} className="text-foreground font-medium">
         {content}
       </strong>
     );
@@ -111,27 +109,28 @@ export function AboutIntro(): ReactNode {
   const paragraphBlocks = introDoc.blocks.slice(1);
 
   return (
-    <section className="mx-auto w-full max-w-160 px-6 pt-20 pb-16 sm:px-10 sm:pt-28 sm:pb-24">
-      <FadeIn delay={0.5}>
-        <div
-          ref={cardRef}
-          data-glow-block
-          className="relative rounded-4xl border border-foreground/5 bg-foreground/1.5 p-8 sm:p-12 dark:bg-foreground/3"
-        >
-          <ListenIntroButton
-            status={status}
-            isPlaying={isPlaying}
-            isAvailable={isAvailable}
-            onToggle={togglePlay}
-          />
+    <FadeIn delay={0.08} duration={0.55} className="h-full">
+      <div ref={cardRef} className="h-full">
+        <SpotlightCard as="article" radius={360} className="h-full p-6 sm:p-7">
+          <div ref={textContainerRef} className="flex h-full flex-col gap-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              {headingBlock ? (
+                <h2 className="text-foreground type-subtitle">
+                  {headingBlock.segments.map((seg) =>
+                    renderSegment(seg, words)
+                  )}
+                </h2>
+              ) : null}
 
-          <div ref={textContainerRef}>
-            {headingBlock ? (
-              <h1 className="pr-14 font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:pr-20 sm:text-[1.4rem]">
-                {headingBlock.segments.map((seg) => renderSegment(seg, words))}
-              </h1>
-            ) : null}
-            <div className="mt-8 space-y-6 text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
+              <ListenIntroButton
+                status={status}
+                isPlaying={isPlaying}
+                isAvailable={isAvailable}
+                onToggle={togglePlay}
+              />
+            </div>
+
+            <div className="text-text-secondary type-body space-y-4 leading-[1.68]">
               {paragraphBlocks.map((block) => (
                 <p key={block.id}>
                   {block.segments.map((seg) => renderSegment(seg, words))}
@@ -139,8 +138,8 @@ export function AboutIntro(): ReactNode {
               ))}
             </div>
           </div>
-        </div>
-      </FadeIn>
-    </section>
+        </SpotlightCard>
+      </div>
+    </FadeIn>
   );
 }

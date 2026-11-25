@@ -29,4 +29,3 @@ export const LANGUAGE_OPTIONS: readonly LanguageOption[] = [
 export function isLanguage(value: unknown): value is Language {
   return value === Language.EN || value === Language.VI;
 }
-

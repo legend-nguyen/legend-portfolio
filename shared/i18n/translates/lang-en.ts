@@ -26,14 +26,30 @@ export const langEn: TranslationDictionary = {
   },
   home: {
     metaTitle: "Home",
+    highlights: {
+      expLabel: "Experience",
+      expValue: "5+ Years Enterprise HRIS",
+      expDetail: "Core HR, recruitment, timekeeping & payroll at scale.",
+      aiLabel: "Workflow",
+      aiValue: "AI-Assisted Workflows",
+      aiDetail: "Agents, LLMs & automated engineering pipelines.",
+      stackLabel: "Core Stack",
+      stackValue: "Full-Stack .NET & Next.js",
+      stackDetail: "Clean architecture, TypeScript & SQL Server tuning.",
+    },
+    featured: {
+      headline: "Enterprise HRIS Modules",
+      subheadline:
+        "Selected production modules designed, engineered, and optimized at scale in EMSC.",
+    },
   },
   hero: {
     greetingPrefix: "Hey",
     greetingSuffix: ", I’m Nguyen Huyen Thoai",
-    headlineLine1: ".NET Developer &",
-    headlineLine2: "AI enthusiast",
+    headlineLine1: "Full-Stack .NET",
+    headlineLine2: "& AI Developer",
     subtitle:
-      "Full-Stack .NET Engineer with 5+ years of experience building lean, high-performance systems enhanced by AI-driven development workflows.",
+      "Senior Full-Stack .NET Engineer with 5+ years of experience building lean, high-performance systems enhanced by AI-driven development workflows.",
     portraitAlt: "Legend portrait",
     viewWork: "View My Work",
   },
@@ -41,6 +57,8 @@ export const langEn: TranslationDictionary = {
     buttonLabel: "Contact",
     emailCopied: "Email copied",
     copyEmail: "Copy {email}",
+    copyEmailLabel: "Copy email",
+    copied: "Copied",
     showEmail: "Show email",
   },
   projects: {
@@ -53,40 +71,73 @@ export const langEn: TranslationDictionary = {
     subheadline:
       "Core human resource management modules at scale in EMSC, where I directly designed, developed, and optimized specialized business modules.",
     viewAll: "View all projects",
+    detailsCue: "Details",
+    filters: {
+      all: "All",
+      hris: "HRIS Core",
+      automation: "Automation & AI",
+      analytics: "Analytics",
+    },
+    modal: {
+      roleHeading: "Architectural Role",
+      impactHeading: "Key Business Impact",
+      stackHeading: "Technology Stack",
+      close: "Close",
+    },
     items: {
       hr: {
         iconLabel: "HR",
-        title:
-          "A centralized, transparent and highly secure platform for human resources data management.",
+        categoryLabel: "HRIS Core",
+        title: "Core HR & Organization Platform",
+        summary:
+          "Unified employee lifecycle management, multi-level org charts, and granular branch-level RBAC across large enterprise workforces.",
         description:
           "Designs and develops the core modules that manage the employee lifecycle, including onboarding, workforce changes and employment contracts. Optimizes large-scale database structures, builds multi-level hierarchical organizational charts, and implements a flexible permission system by department and branch.",
+        role: "Core Module Architect & Senior Full-Stack Engineer — led database schema optimization, hierarchical org-chart queries, and multi-tenant branch/department authorization.",
+        impact:
+          "Standardized HR records across multi-branch enterprises, accelerated complex org-tree rendering, and enforced strict audit-ready role permissions.",
         meta: "",
         imageAlt: "HR overview chart",
       },
       recruitment: {
         iconLabel: "Recruitment",
-        title:
-          "End-to-end automation of enterprise recruitment workflows and candidate sourcing.",
+        categoryLabel: "Automation & AI",
+        title: "Automated Recruitment Pipeline",
+        summary:
+          "Automated candidate ingestion from job portals, smart interview scheduling, email templates, and real-time channel analytics.",
         description:
           "Builds and optimizes an end-to-end recruitment management system for large enterprises. Integrates automated candidate data flows from job portals, intelligent interview scheduling, automated email notification templates, and real-time analytics on sourcing channel performance.",
+        role: "Full-Stack .NET Engineer — architected portal sync pipelines, workflow automation triggers, and dynamic notification templating.",
+        impact:
+          "Eliminated manual CV data entry from external job boards, shortened hiring-to-interview cycles, and gave HR teams real-time visibility into sourcing ROI.",
         meta: "",
         imageAlt: "Candidate pool interface",
       },
       timekeeping: {
         iconLabel: "Timekeeping",
-        title:
-          "An expanded ecosystem of timekeeping, payroll and management analytics tools.",
+        categoryLabel: "Analytics",
+        title: "Timekeeping, Payroll & BI",
+        summary:
+          "High-throughput synchronization APIs connecting attendance devices, payroll calculation, KPI appraisals, and executive BI dashboards.",
         description:
           "Contributes to the development and cross-integration of key supporting modules, including timekeeping, payroll, KPI-based performance appraisal and intelligent reporting (Dashboard/BI). Builds high-performance data synchronization APIs to ensure seamless interoperability across modules within the overall HRM system.",
+        role: "Backend & Integration Engineer — designed cross-module REST sync APIs, optimized heavy payroll/attendance aggregations, and supported BI reporting views.",
+        impact:
+          "Delivered reliable cross-module data consistency between attendance, KPIs, and payroll while reducing monthly reporting latency.",
         meta: "",
         imageAlt: "Timekeeping chart",
       },
       elearning: {
         iconLabel: "Training",
-        title:
-          "A solution for digitizing internal training and developing employee learning pathways.",
+        categoryLabel: "Automation & AI",
+        title: "Enterprise Learning Platform",
+        summary:
+          "Digitized course catalogs, structured skill pathways, and automated online testing to track workforce capability growth.",
         description:
           "Develops modules for managing both in-house and external training programs, digitizing course catalogs, and managing training plans from foundational to advanced levels. Integrates features for tracking skill development pathways and evaluating online test and quiz results, thereby improving the quality of the workforce.",
+        role: "Full-Stack Developer — built course catalog workflows, automated quiz evaluation modules, and employee skill-matrix tracking.",
+        impact:
+          "Transitioned enterprise training from manual spreadsheets to structured digital learning pathways with measurable assessment outcomes.",
         meta: "",
         imageAlt: "Online lessons",
       },
@@ -97,8 +148,8 @@ export const langEn: TranslationDictionary = {
     description:
       "I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Just reach out!",
     seeProjects: "See projects",
-    copyright: "2026 © Built with Next.js",
-    credit: "Vibe coding with AI",
+    copyright: "© 2026 Nguyen Huyen Thoai",
+    credit: "Built with Next.js & TypeScript",
     social: {
       email: "Email",
       linkedin: "LinkedIn",
@@ -110,9 +161,25 @@ export const langEn: TranslationDictionary = {
   about: {
     metaTitle: "About",
     metaDescription: "About me, background, and how to get in touch.",
+    pageTitle: "About & Engineering Background",
+    pageSubtitle:
+      "5+ years architecting enterprise HRIS platforms, scalable .NET backends, and AI-assisted engineering workflows.",
     listenIntro: "Listen to introduction",
     stopListening: "Stop listening",
+    listenShort: "Listen",
+    pauseShort: "Pause",
     audioUnavailable: "Audio introduction unavailable",
+    quickInfo: {
+      title: "At a Glance",
+      locationLabel: "Location",
+      locationValue: "Ho Chi Minh City, VN",
+      experienceLabel: "Experience",
+      experienceValue: "5+ Years",
+      roleLabel: "Role",
+      roleValue: "Senior Software Engineer",
+      focusLabel: "Focus",
+      focusValue: "HRIS & AI Workflows",
+    },
     intro: {
       greetingPrefix: "Hello! I’m ",
       name: "Nguyen Huyen Thoai",
@@ -125,15 +192,16 @@ export const langEn: TranslationDictionary = {
       p1Highlight3: "advanced modular development",
       p1Part4:
         ", I combine technical logic with the ability to bring complex business solutions to life.",
-      p2Part1:
-        "Beyond my core technical expertise, I have a deep passion for ",
-      p2Highlight1: "artificial intelligence (AI) and modern development workflows",
+      p2Part1: "Beyond my core technical expertise, I have a deep passion for ",
+      p2Highlight1:
+        "artificial intelligence (AI) and modern development workflows",
       p2Part2:
         ". I actively integrate AI agents, LLMs, and intelligent tools into my daily coding routine to accelerate deployment, automate tasks, and solve complex challenges with maximum efficiency.",
       p3Part1:
         "Currently contributing to the development of core modules within HR software ecosystems such as ",
       p3Highlight1: "enterprise HRIS systems",
-      p3Part2: ", I continuously explore the intersection of software engineering and AI to ",
+      p3Part2:
+        ", I continuously explore the intersection of software engineering and AI to ",
       p3Highlight2:
         "create intelligent automation solutions and build scalable, sustainable systems",
       p3Part3: ".",
@@ -147,7 +215,7 @@ export const langEn: TranslationDictionary = {
       showMore: "Show {count} more",
       items: {
         emsc: {
-          company: "EMS Coporation",
+          company: "EMS Corporation",
           role: "Senior Software Engineer",
           period: "Nov 2020 – Present",
         },
@@ -155,7 +223,7 @@ export const langEn: TranslationDictionary = {
           company: "DV Software",
           role: "Intern Software Engineer",
           period: "Feb 2020 – June 2020",
-        }
+        },
       },
     },
     education: {
@@ -165,7 +233,7 @@ export const langEn: TranslationDictionary = {
           school: "Cao Thang Technical College",
           degree: "Bachelor of IT",
           period: "2017 – 2020",
-        }
+        },
       },
     },
     skills: {
@@ -198,7 +266,9 @@ export const langEn: TranslationDictionary = {
     inputPlaceholder: "Ask a question…",
     inputAriaLabel: "Your question",
     send: "Send",
-    disclaimer: "AI assistant may make mistakes. Please verify important details.",
+    thinking: "Thinking",
+    disclaimer:
+      "AI assistant may make mistakes. Please verify important details.",
     genericError: "Something went wrong, please try again.",
     emptyResponseError: "No response received, please try again.",
     suggestions: {
@@ -209,4 +279,3 @@ export const langEn: TranslationDictionary = {
     },
   },
 };
-

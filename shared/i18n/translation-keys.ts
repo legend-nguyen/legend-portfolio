@@ -23,6 +23,21 @@ export const TRANSLATION_KEYS = {
   },
   home: {
     metaTitle: "home.metaTitle",
+    highlights: {
+      expLabel: "home.highlights.expLabel",
+      expValue: "home.highlights.expValue",
+      expDetail: "home.highlights.expDetail",
+      aiLabel: "home.highlights.aiLabel",
+      aiValue: "home.highlights.aiValue",
+      aiDetail: "home.highlights.aiDetail",
+      stackLabel: "home.highlights.stackLabel",
+      stackValue: "home.highlights.stackValue",
+      stackDetail: "home.highlights.stackDetail",
+    },
+    featured: {
+      headline: "home.featured.headline",
+      subheadline: "home.featured.subheadline",
+    },
   },
   hero: {
     greetingPrefix: "hero.greetingPrefix",
@@ -37,6 +52,8 @@ export const TRANSLATION_KEYS = {
     buttonLabel: "contact.buttonLabel",
     emailCopied: "contact.emailCopied",
     copyEmail: "contact.copyEmail",
+    copyEmailLabel: "contact.copyEmailLabel",
+    copied: "contact.copied",
     showEmail: "contact.showEmail",
   },
   projects: {
@@ -47,32 +64,61 @@ export const TRANSLATION_KEYS = {
     headline: "projects.headline",
     subheadline: "projects.subheadline",
     viewAll: "projects.viewAll",
+    detailsCue: "projects.detailsCue",
+    filters: {
+      all: "projects.filters.all",
+      hris: "projects.filters.hris",
+      automation: "projects.filters.automation",
+      analytics: "projects.filters.analytics",
+    },
+    modal: {
+      roleHeading: "projects.modal.roleHeading",
+      impactHeading: "projects.modal.impactHeading",
+      stackHeading: "projects.modal.stackHeading",
+      close: "projects.modal.close",
+    },
     items: {
       hr: {
         iconLabel: "projects.items.hr.iconLabel",
+        categoryLabel: "projects.items.hr.categoryLabel",
         title: "projects.items.hr.title",
+        summary: "projects.items.hr.summary",
         description: "projects.items.hr.description",
+        role: "projects.items.hr.role",
+        impact: "projects.items.hr.impact",
         meta: "projects.items.hr.meta",
         imageAlt: "projects.items.hr.imageAlt",
       },
       recruitment: {
         iconLabel: "projects.items.recruitment.iconLabel",
+        categoryLabel: "projects.items.recruitment.categoryLabel",
         title: "projects.items.recruitment.title",
+        summary: "projects.items.recruitment.summary",
         description: "projects.items.recruitment.description",
+        role: "projects.items.recruitment.role",
+        impact: "projects.items.recruitment.impact",
         meta: "projects.items.recruitment.meta",
         imageAlt: "projects.items.recruitment.imageAlt",
       },
       timekeeping: {
         iconLabel: "projects.items.timekeeping.iconLabel",
+        categoryLabel: "projects.items.timekeeping.categoryLabel",
         title: "projects.items.timekeeping.title",
+        summary: "projects.items.timekeeping.summary",
         description: "projects.items.timekeeping.description",
+        role: "projects.items.timekeeping.role",
+        impact: "projects.items.timekeeping.impact",
         meta: "projects.items.timekeeping.meta",
         imageAlt: "projects.items.timekeeping.imageAlt",
       },
       elearning: {
         iconLabel: "projects.items.elearning.iconLabel",
+        categoryLabel: "projects.items.elearning.categoryLabel",
         title: "projects.items.elearning.title",
+        summary: "projects.items.elearning.summary",
         description: "projects.items.elearning.description",
+        role: "projects.items.elearning.role",
+        impact: "projects.items.elearning.impact",
         meta: "projects.items.elearning.meta",
         imageAlt: "projects.items.elearning.imageAlt",
       },
@@ -95,9 +141,24 @@ export const TRANSLATION_KEYS = {
   about: {
     metaTitle: "about.metaTitle",
     metaDescription: "about.metaDescription",
+    pageTitle: "about.pageTitle",
+    pageSubtitle: "about.pageSubtitle",
     listenIntro: "about.listenIntro",
     stopListening: "about.stopListening",
+    listenShort: "about.listenShort",
+    pauseShort: "about.pauseShort",
     audioUnavailable: "about.audioUnavailable",
+    quickInfo: {
+      title: "about.quickInfo.title",
+      locationLabel: "about.quickInfo.locationLabel",
+      locationValue: "about.quickInfo.locationValue",
+      experienceLabel: "about.quickInfo.experienceLabel",
+      experienceValue: "about.quickInfo.experienceValue",
+      roleLabel: "about.quickInfo.roleLabel",
+      roleValue: "about.quickInfo.roleValue",
+      focusLabel: "about.quickInfo.focusLabel",
+      focusValue: "about.quickInfo.focusValue",
+    },
     intro: {
       greetingPrefix: "about.intro.greetingPrefix",
       name: "about.intro.name",
@@ -134,7 +195,7 @@ export const TRANSLATION_KEYS = {
           company: "about.experience.items.dvs.company",
           role: "about.experience.items.dvs.role",
           period: "about.experience.items.dvs.period",
-        }
+        },
       },
     },
     education: {
@@ -144,7 +205,7 @@ export const TRANSLATION_KEYS = {
           school: "about.education.items.ct.school",
           degree: "about.education.items.ct.degree",
           period: "about.education.items.ct.period",
-        }
+        },
       },
     },
     skills: {
@@ -176,6 +237,7 @@ export const TRANSLATION_KEYS = {
     inputPlaceholder: "chat.inputPlaceholder",
     inputAriaLabel: "chat.inputAriaLabel",
     send: "chat.send",
+    thinking: "chat.thinking",
     disclaimer: "chat.disclaimer",
     genericError: "chat.genericError",
     emptyResponseError: "chat.emptyResponseError",
@@ -199,4 +261,3 @@ type MapLeavesToString<T> = T extends string
 export type TranslationKey = LeafValues<typeof TRANSLATION_KEYS>;
 
 export type TranslationDictionary = MapLeavesToString<typeof TRANSLATION_KEYS>;
-
