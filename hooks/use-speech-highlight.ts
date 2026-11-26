@@ -1,5 +1,6 @@
 "use client";
 
+import { useReducedMotion } from "@/lib/motion";
 import type { Language } from "@/shared/i18n";
 import {
   useCallback,
@@ -120,11 +121,12 @@ export function useSpeechHighlight({
   const [isNearViewport, setIsNearViewport] = useState<boolean>(false);
   const [resource, setResource] = useState<LoadedResourceState | null>(null);
 
+  const prefersReducedMotion = useReducedMotion();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafIdRef = useRef<number | null>(null);
   const activeWordIndexRef = useRef<number>(-1);
   const wordElementsRef = useRef<HTMLElement[]>([]);
-  const reducedMotionRef = useRef<boolean>(false);
+  const reducedMotionRef = useRef<boolean>(prefersReducedMotion);
 
   const currentManifest =
     resource?.key === resourceKey ? resource.manifest : null;
@@ -136,19 +138,8 @@ export function useSpeechHighlight({
       : resource.playbackStatus;
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    reducedMotionRef.current = mediaQuery.matches;
-    const handleChange = (event: MediaQueryListEvent): void => {
-      reducedMotionRef.current = event.matches;
-    };
-    mediaQuery.addEventListener("change", handleChange);
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
-  }, []);
+    reducedMotionRef.current = prefersReducedMotion;
+  }, [prefersReducedMotion]);
 
   const cacheWordElements = useCallback((): HTMLElement[] => {
     const container = textContainerRef.current;

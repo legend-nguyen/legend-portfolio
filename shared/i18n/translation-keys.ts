@@ -17,6 +17,11 @@ export const TRANSLATION_KEYS = {
     switchToDark: "theme.switchToDark",
     toggle: "theme.toggle",
   },
+  motion: {
+    disableAnimations: "motion.disableAnimations",
+    enableAnimations: "motion.enableAnimations",
+    toggle: "motion.toggle",
+  },
   language: {
     ariaLabel: "language.ariaLabel",
     selectOption: "language.selectOption",

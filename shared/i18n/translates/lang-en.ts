@@ -20,6 +20,11 @@ export const langEn: TranslationDictionary = {
     switchToDark: "Switch to dark theme",
     toggle: "Toggle theme",
   },
+  motion: {
+    disableAnimations: "Disable animations (smoother on low-spec devices)",
+    enableAnimations: "Enable animations",
+    toggle: "Toggle animations",
+  },
   language: {
     ariaLabel: "Select language",
     selectOption: "Switch language to {language}",

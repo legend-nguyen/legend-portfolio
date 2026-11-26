@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n";
+import { useReducedMotion } from "@/lib/motion";
 import { TRANSLATION_KEYS } from "@/shared/i18n";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, Copy, Mail } from "lucide-react";
@@ -12,6 +13,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function ContactButton(): ReactNode {
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -39,7 +41,7 @@ export function ContactButton(): ReactNode {
   return (
     <motion.button
       type="button"
-      layout
+      layout={!prefersReducedMotion}
       onClick={handleCopy}
       onHoverStart={() => setOpen(true)}
       onHoverEnd={() => setOpen(false)}
@@ -52,23 +54,39 @@ export function ContactButton(): ReactNode {
             ? t(TRANSLATION_KEYS.contact.copyEmail, { email: EMAIL })
             : t(TRANSLATION_KEYS.contact.showEmail)
       }
-      transition={{ layout: { duration: 0.45, ease: EASE } }}
+      transition={{
+        layout: {
+          duration: prefersReducedMotion ? 0 : 0.45,
+          ease: EASE,
+        },
+      }}
       style={{ borderRadius: 9999 }}
       className="focus-ring type-label bg-foreground text-background relative inline-flex h-10 cursor-pointer items-center justify-center px-4.5 transition-opacity duration-200 hover:opacity-90 active:scale-[0.98]"
     >
       <motion.span
-        layout="position"
+        layout={prefersReducedMotion ? false : "position"}
         className="relative inline-flex items-center"
       >
         <AnimatePresence initial={false} mode="popLayout">
           {open ? (
             <motion.span
               key="email"
-              layout="position"
-              initial={{ opacity: 0, filter: "blur(8px)" }}
+              layout={prefersReducedMotion ? false : "position"}
+              initial={
+                prefersReducedMotion
+                  ? { opacity: 1 }
+                  : { opacity: 0, filter: "blur(8px)" }
+              }
               animate={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(8px)" }}
-              transition={{ duration: 0.35, ease: EASE }}
+              exit={
+                prefersReducedMotion
+                  ? { opacity: 0 }
+                  : { opacity: 0, filter: "blur(8px)" }
+              }
+              transition={{
+                duration: prefersReducedMotion ? 0 : 0.35,
+                ease: EASE,
+              }}
               className="inline-flex items-center gap-2 whitespace-nowrap"
             >
               <span className="relative inline-flex h-4 w-4 shrink-0 items-center justify-center">
@@ -76,10 +94,21 @@ export function ContactButton(): ReactNode {
                   {copied ? (
                     <motion.span
                       key="check"
-                      initial={{ scale: 0.5, opacity: 0 }}
+                      initial={
+                        prefersReducedMotion
+                          ? { opacity: 1 }
+                          : { scale: 0.5, opacity: 0 }
+                      }
                       animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0.5, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: EASE }}
+                      exit={
+                        prefersReducedMotion
+                          ? { opacity: 0 }
+                          : { scale: 0.5, opacity: 0 }
+                      }
+                      transition={{
+                        duration: prefersReducedMotion ? 0 : 0.2,
+                        ease: EASE,
+                      }}
                       className="inline-flex"
                     >
                       <Check className="h-4 w-4" aria-hidden="true" />
@@ -87,10 +116,21 @@ export function ContactButton(): ReactNode {
                   ) : (
                     <motion.span
                       key="copy"
-                      initial={{ scale: 0.5, opacity: 0 }}
+                      initial={
+                        prefersReducedMotion
+                          ? { opacity: 1 }
+                          : { scale: 0.5, opacity: 0 }
+                      }
                       animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0.5, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: EASE }}
+                      exit={
+                        prefersReducedMotion
+                          ? { opacity: 0 }
+                          : { scale: 0.5, opacity: 0 }
+                      }
+                      transition={{
+                        duration: prefersReducedMotion ? 0 : 0.2,
+                        ease: EASE,
+                      }}
                       className="inline-flex"
                     >
                       <Copy className="h-4 w-4" aria-hidden="true" />
@@ -103,11 +143,22 @@ export function ContactButton(): ReactNode {
           ) : (
             <motion.span
               key="contact"
-              layout="position"
-              initial={{ opacity: 0, filter: "blur(8px)" }}
+              layout={prefersReducedMotion ? false : "position"}
+              initial={
+                prefersReducedMotion
+                  ? { opacity: 1 }
+                  : { opacity: 0, filter: "blur(8px)" }
+              }
               animate={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(8px)" }}
-              transition={{ duration: 0.35, ease: EASE }}
+              exit={
+                prefersReducedMotion
+                  ? { opacity: 0 }
+                  : { opacity: 0, filter: "blur(8px)" }
+              }
+              transition={{
+                duration: prefersReducedMotion ? 0 : 0.35,
+                ease: EASE,
+              }}
               className="inline-flex items-center gap-2 whitespace-nowrap"
             >
               <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />

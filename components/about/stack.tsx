@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n";
+import { useReducedMotion } from "@/lib/motion";
 import { TRANSLATION_KEYS } from "@/shared/i18n";
 import { RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -54,12 +55,14 @@ type ChipState = {
 
 export function Stack(): ReactNode {
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const measureRef = useRef<HTMLDivElement | null>(null);
   const chipRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [resetKey, setResetKey] = useState(0);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const container = containerRef.current;
     const measure = measureRef.current;
     if (!container || !measure) return;
@@ -170,10 +173,11 @@ export function Stack(): ReactNode {
       });
 
       const runner = Runner.create();
-      Runner.run(runner, engine);
-
+      let isActive = false;
       let raf = 0;
+
       const tick = (): void => {
+        if (!isActive) return;
         for (let i = 0; i < states.length; i++) {
           const s = states[i];
           const el = chipRefs.current[i];
@@ -183,7 +187,43 @@ export function Stack(): ReactNode {
         }
         raf = requestAnimationFrame(tick);
       };
-      raf = requestAnimationFrame(tick);
+
+      const startLoop = (): void => {
+        if (isActive) return;
+        isActive = true;
+        Runner.run(runner, engine);
+        raf = requestAnimationFrame(tick);
+      };
+
+      const stopLoop = (): void => {
+        if (!isActive) return;
+        isActive = false;
+        cancelAnimationFrame(raf);
+        raf = 0;
+        Runner.stop(runner);
+      };
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          const visible = entries.some((entry) => entry.isIntersecting);
+          if (visible && !document.hidden) {
+            startLoop();
+          } else {
+            stopLoop();
+          }
+        },
+        { rootMargin: "120px" }
+      );
+      io.observe(container);
+
+      const onVisibility = (): void => {
+        if (document.hidden) {
+          stopLoop();
+        } else {
+          startLoop();
+        }
+      };
+      document.addEventListener("visibilitychange", onVisibility);
 
       const onResize = (): void => {
         const newW = container.clientWidth;
@@ -208,9 +248,10 @@ export function Stack(): ReactNode {
       ro.observe(container);
 
       cleanup = () => {
-        cancelAnimationFrame(raf);
+        stopLoop();
+        io.disconnect();
         ro.disconnect();
-        Runner.stop(runner);
+        document.removeEventListener("visibilitychange", onVisibility);
         World.clear(world, false);
         Engine.clear(engine);
       };
@@ -220,7 +261,7 @@ export function Stack(): ReactNode {
       cancelled = true;
       cleanup?.();
     };
-  }, [resetKey]);
+  }, [resetKey, prefersReducedMotion]);
 
   return (
     <section className="border-border-hairline bg-surface-1 hover:border-border-subtle overflow-hidden rounded-2xl border transition-colors duration-300">
@@ -229,52 +270,62 @@ export function Stack(): ReactNode {
           {t(TRANSLATION_KEYS.about.stack.title)}
         </h2>
 
-        <button
-          type="button"
-          onClick={() => setResetKey((k) => k + 1)}
-          aria-label={t(TRANSLATION_KEYS.about.stack.resetAriaLabel)}
-          title={t(TRANSLATION_KEYS.about.stack.resetAriaLabel)}
-          className="focus-ring border-border-hairline bg-surface-2 text-text-secondary hover:border-border-subtle hover:bg-surface-3 hover:text-foreground inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200"
-        >
-          <RotateCcw
-            className="h-3.5 w-3.5"
-            strokeWidth={2}
-            aria-hidden="true"
-          />
-        </button>
+        {!prefersReducedMotion ? (
+          <button
+            type="button"
+            onClick={() => setResetKey((k) => k + 1)}
+            aria-label={t(TRANSLATION_KEYS.about.stack.resetAriaLabel)}
+            title={t(TRANSLATION_KEYS.about.stack.resetAriaLabel)}
+            className="focus-ring border-border-hairline bg-surface-2 text-text-secondary hover:border-border-subtle hover:bg-surface-3 hover:text-foreground inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border transition-colors duration-200"
+          >
+            <RotateCcw
+              className="h-3.5 w-3.5"
+              strokeWidth={2}
+              aria-hidden="true"
+            />
+          </button>
+        ) : null}
       </div>
 
-      <div className="relative h-52 overflow-hidden sm:h-60">
-        <div
-          ref={measureRef}
-          aria-hidden="true"
-          className="pointer-events-none invisible absolute top-0 left-0 flex flex-wrap gap-2"
-        >
+      {prefersReducedMotion ? (
+        <div className="flex flex-wrap gap-2.5 p-6">
           {CHIPS.map((chip) => (
-            <ChipPill key={`m-${chip.label}`} chip={chip} />
+            <ChipPill key={`static-${chip.label}`} chip={chip} />
           ))}
         </div>
+      ) : (
+        <div className="relative h-52 overflow-hidden sm:h-60">
+          <div
+            ref={measureRef}
+            aria-hidden="true"
+            className="pointer-events-none invisible absolute top-0 left-0 flex flex-wrap gap-2"
+          >
+            {CHIPS.map((chip) => (
+              <ChipPill key={`m-${chip.label}`} chip={chip} />
+            ))}
+          </div>
 
-        <div
-          ref={containerRef}
-          className="absolute inset-0 cursor-grab select-none"
-          style={{ touchAction: "none" }}
-        >
-          {CHIPS.map((chip, i) => (
-            <div
-              key={`${resetKey}-${chip.label}`}
-              ref={(el) => {
-                chipRefs.current[i] = el;
-              }}
-              data-stack-chip
-              className="pointer-events-none absolute top-0 left-0 will-change-transform"
-              style={{ transform: "translate3d(-9999px, -9999px, 0)" }}
-            >
-              <ChipPill chip={chip} />
-            </div>
-          ))}
+          <div
+            ref={containerRef}
+            className="absolute inset-0 cursor-grab select-none"
+            style={{ touchAction: "none" }}
+          >
+            {CHIPS.map((chip, i) => (
+              <div
+                key={`${resetKey}-${chip.label}`}
+                ref={(el) => {
+                  chipRefs.current[i] = el;
+                }}
+                data-stack-chip
+                className="pointer-events-none absolute top-0 left-0 will-change-transform"
+                style={{ transform: "translate3d(-9999px, -9999px, 0)" }}
+              >
+                <ChipPill chip={chip} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

@@ -2,9 +2,9 @@
 
 import { LanguageDropdown } from "@/components/layout/language-dropdown";
 import { useTranslation } from "@/lib/i18n";
-import { useReducedMotion } from "@/lib/motion";
+import { useMotionPreference, useReducedMotion } from "@/lib/motion";
 import { TRANSLATION_KEYS, type TranslationKey } from "@/shared/i18n";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sparkles, Sun, ZapOff } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -30,18 +30,55 @@ function useIsMounted(): boolean {
   );
 }
 
+function NavMotionToggle(): ReactNode {
+  const mounted = useIsMounted();
+  const { reducedMotion, toggleReducedMotion } = useMotionPreference();
+  const { t } = useTranslation();
+
+  const label = mounted
+    ? reducedMotion
+      ? t(TRANSLATION_KEYS.motion.enableAnimations)
+      : t(TRANSLATION_KEYS.motion.disableAnimations)
+    : t(TRANSLATION_KEYS.motion.toggle);
+
+  return (
+    <button
+      type="button"
+      onClick={toggleReducedMotion}
+      aria-label={label}
+      title={label}
+      aria-pressed={mounted ? reducedMotion : undefined}
+      className="focus-ring text-text-secondary hover:bg-surface-2 hover:text-foreground relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-colors duration-200"
+    >
+      <span aria-hidden="true" className="relative h-4 w-4">
+        <Sparkles
+          className={`absolute inset-0 h-4 w-4 text-current transition-[transform,opacity] duration-250 ease-out ${
+            mounted && !reducedMotion
+              ? "scale-100 opacity-100"
+              : "scale-75 opacity-0"
+          }`}
+        />
+        <ZapOff
+          className={`absolute inset-0 h-4 w-4 text-current transition-[transform,opacity] duration-250 ease-out ${
+            mounted && reducedMotion
+              ? "scale-100 opacity-100"
+              : "scale-75 opacity-0"
+          }`}
+        />
+      </span>
+    </button>
+  );
+}
+
 function NavThemeToggle(): ReactNode {
   const mounted = useIsMounted();
   const { setTheme, resolvedTheme } = useTheme();
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
   const isDark = mounted && resolvedTheme === "dark";
 
   const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const next = isDark ? "light" : "dark";
-
-    const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const supportsViewTransitions =
       typeof document !== "undefined" &&
@@ -169,6 +206,13 @@ export function Nav(): ReactNode {
         />
 
         <LanguageDropdown />
+
+        <span
+          aria-hidden="true"
+          className="bg-border-hairline mx-0.5 h-4 w-px shrink-0"
+        />
+
+        <NavMotionToggle />
 
         <span
           aria-hidden="true"

@@ -20,6 +20,11 @@ export const langVn: TranslationDictionary = {
     switchToDark: "Chuyển sang giao diện tối",
     toggle: "Đổi giao diện",
   },
+  motion: {
+    disableAnimations: "Tắt hiệu ứng (mượt hơn cho máy cấu hình yếu)",
+    enableAnimations: "Bật hiệu ứng chuyển động",
+    toggle: "Bật/tắt hiệu ứng",
+  },
   language: {
     ariaLabel: "Chọn ngôn ngữ",
     selectOption: "Chuyển ngôn ngữ sang {language}",

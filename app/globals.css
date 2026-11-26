@@ -154,6 +154,14 @@ html.dark {
   }
 }
 
+html[data-reduced-motion="true"] *,
+html[data-reduced-motion="true"] *::before,
+html[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -218,6 +226,10 @@ html[data-theme-anim="1"]::view-transition-new(root) {
   html[data-theme-anim="1"]::view-transition-new(root) {
     animation: none;
   }
+}
+
+html[data-reduced-motion="true"][data-theme-anim="1"]::view-transition-new(root) {
+  animation: none;
 }
 
 /* About Intro TTS word-level highlight & soundwave */
@@ -298,4 +310,12 @@ html[data-theme-anim="1"]::view-transition-new(root) {
   .tts-word {
     transition: none !important;
   }
+}
+
+html[data-reduced-motion="true"] .tts-wave-bar {
+  animation: none !important;
+}
+
+html[data-reduced-motion="true"] .tts-word {
+  transition: none !important;
 }

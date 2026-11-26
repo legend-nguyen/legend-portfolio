@@ -3,28 +3,117 @@
 import { motion, type MotionProps, type Variants } from "motion/react";
 import {
   createContext,
+  useCallback,
   useContext,
+  useEffect,
+  useMemo,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
 
-function subscribeToReducedMotion(callback: () => void): () => void {
+export type MotionPreference = "system" | "reduced" | "full";
+
+const STORAGE_KEY = "portfolio-motion-preference";
+const CHANGE_EVENT = "portfolio-motion-preference-change";
+
+type NavigatorWithHardwareHints = Navigator & {
+  deviceMemory?: number;
+  connection?: { saveData?: boolean };
+};
+
+function isLowPowerDevice(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const nav = navigator as NavigatorWithHardwareHints;
+  if (nav.connection?.saveData) return true;
+  if (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4) {
+    return true;
+  }
+  if (
+    typeof nav.hardwareConcurrency === "number" &&
+    nav.hardwareConcurrency <= 2
+  ) {
+    return true;
+  }
+  return false;
+}
+
+function subscribeToSystemReducedMotion(callback: () => void): () => void {
   const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   mediaQuery.addEventListener("change", callback);
   return () => mediaQuery.removeEventListener("change", callback);
 }
 
-function getReducedMotionSnapshot(): boolean {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function getSystemReducedMotionSnapshot(): boolean {
+  return (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    isLowPowerDevice()
+  );
 }
 
-function getReducedMotionServerSnapshot(): boolean {
+function getSystemReducedMotionServerSnapshot(): boolean {
   return false;
 }
 
-const ReducedMotionContext = createContext<boolean>(false);
+function subscribeToStoredPreference(callback: () => void): () => void {
+  const onStorage = (event: StorageEvent): void => {
+    if (event.key === STORAGE_KEY || event.key === null) callback();
+  };
+  window.addEventListener("storage", onStorage);
+  window.addEventListener(CHANGE_EVENT, callback);
+  return () => {
+    window.removeEventListener("storage", onStorage);
+    window.removeEventListener(CHANGE_EVENT, callback);
+  };
+}
+
+function getStoredPreferenceSnapshot(): MotionPreference {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (raw === "reduced" || raw === "full" || raw === "system") {
+      return raw;
+    }
+  } catch {
+    // ignore storage errors
+  }
+  return "system";
+}
+
+function getStoredPreferenceServerSnapshot(): MotionPreference {
+  return "system";
+}
+
+function writeStoredPreference(next: MotionPreference): void {
+  try {
+    if (next === "system") {
+      window.localStorage.removeItem(STORAGE_KEY);
+    } else {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    }
+  } catch {
+    // ignore storage errors
+  }
+  window.dispatchEvent(new Event(CHANGE_EVENT));
+}
+
+type MotionContextValue = {
+  reducedMotion: boolean;
+  preference: MotionPreference;
+  setPreference: (next: MotionPreference) => void;
+  toggleReducedMotion: () => void;
+};
+
+const ReducedMotionContext = createContext<MotionContextValue>({
+  reducedMotion: false,
+  preference: "system",
+  setPreference: () => {},
+  toggleReducedMotion: () => {},
+});
 
 export function useReducedMotion(): boolean {
+  return useContext(ReducedMotionContext).reducedMotion;
+}
+
+export function useMotionPreference(): MotionContextValue {
   return useContext(ReducedMotionContext);
 }
 
@@ -33,14 +122,52 @@ export function ReducedMotionProvider({
 }: {
   children: ReactNode;
 }): ReactNode {
-  const prefersReducedMotion = useSyncExternalStore(
-    subscribeToReducedMotion,
-    getReducedMotionSnapshot,
-    getReducedMotionServerSnapshot
+  const systemReduced = useSyncExternalStore(
+    subscribeToSystemReducedMotion,
+    getSystemReducedMotionSnapshot,
+    getSystemReducedMotionServerSnapshot
+  );
+  const preference = useSyncExternalStore(
+    subscribeToStoredPreference,
+    getStoredPreferenceSnapshot,
+    getStoredPreferenceServerSnapshot
+  );
+
+  const reducedMotion =
+    preference === "reduced"
+      ? true
+      : preference === "full"
+        ? false
+        : systemReduced;
+
+  useEffect(() => {
+    if (reducedMotion) {
+      document.documentElement.dataset.reducedMotion = "true";
+    } else {
+      delete document.documentElement.dataset.reducedMotion;
+    }
+  }, [reducedMotion]);
+
+  const setPreference = useCallback((next: MotionPreference): void => {
+    writeStoredPreference(next);
+  }, []);
+
+  const toggleReducedMotion = useCallback((): void => {
+    writeStoredPreference(reducedMotion ? "full" : "reduced");
+  }, [reducedMotion]);
+
+  const value = useMemo<MotionContextValue>(
+    () => ({
+      reducedMotion,
+      preference,
+      setPreference,
+      toggleReducedMotion,
+    }),
+    [reducedMotion, preference, setPreference, toggleReducedMotion]
   );
 
   return (
-    <ReducedMotionContext.Provider value={prefersReducedMotion}>
+    <ReducedMotionContext.Provider value={value}>
       {children}
     </ReducedMotionContext.Provider>
   );

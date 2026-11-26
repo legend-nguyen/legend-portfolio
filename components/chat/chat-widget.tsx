@@ -1,9 +1,10 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n";
+import { useReducedMotion } from "@/lib/motion";
 import { TRANSLATION_KEYS } from "@/shared/i18n";
 import { MessageCircle, RotateCcw, SendHorizontal, X } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   useEffect,
   useId,
@@ -77,7 +78,7 @@ function loadMessages(): Message[] {
 
 export function ChatWidget(): ReactNode {
   const { t } = useTranslation();
-  const prefersReducedMotion = useReducedMotion() ?? false;
+  const prefersReducedMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");

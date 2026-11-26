@@ -19,13 +19,15 @@ export function FadeIn({
 }): ReactNode {
   const prefersReducedMotion = useReducedMotion();
 
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
-      initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={
-        prefersReducedMotion ? { duration: 0.01 } : { duration, delay, ease: EASE }
-      }
+      transition={{ duration, delay, ease: EASE }}
       className={className}
     >
       {children}
@@ -46,17 +48,15 @@ export function ScaleUnblur({
 }): ReactNode {
   const prefersReducedMotion = useReducedMotion();
 
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
-      initial={
-        prefersReducedMotion
-          ? { opacity: 0 }
-          : { opacity: 0, scale: 0.96, filter: "blur(8px)" }
-      }
+      initial={{ opacity: 0, scale: 0.96, filter: "blur(8px)" }}
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      transition={
-        prefersReducedMotion ? { duration: 0.01 } : { duration, delay, ease: EASE }
-      }
+      transition={{ duration, delay, ease: EASE }}
       style={{ transformOrigin: "center" }}
       className={className}
     >

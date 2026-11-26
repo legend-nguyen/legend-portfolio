@@ -46,13 +46,16 @@ export function FadeInText({
   className,
 }: FadeInTextProps): ReactNode {
   const prefersReducedMotion = useReducedMotion();
-  const Component = MOTION_ELEMENTS[as];
 
-  const initial = prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y };
-  const target = prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
-  const transition = prefersReducedMotion
-    ? { duration: 0.01 }
-    : { duration, delay, ease: EDITORIAL_EASE };
+  if (prefersReducedMotion) {
+    const PlainTag = as;
+    return <PlainTag className={cn(className)}>{children}</PlainTag>;
+  }
+
+  const Component = MOTION_ELEMENTS[as];
+  const initial = { opacity: 0, y };
+  const target = { opacity: 1, y: 0 };
+  const transition = { duration, delay, ease: EDITORIAL_EASE };
 
   if (trigger === "mount") {
     return (
@@ -112,6 +115,12 @@ export function BlurReveal({
   className,
 }: BlurRevealProps): ReactNode {
   const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    const PlainTag = as;
+    return <PlainTag className={cn(className)}>{children}</PlainTag>;
+  }
+
   const Component = MOTION_ELEMENTS[as];
 
   if (by === "word" && typeof children === "string") {
@@ -121,24 +130,18 @@ export function BlurReveal({
     const containerVariants = {
       hidden: {},
       visible: {
-        transition: prefersReducedMotion
-          ? { duration: 0.01 }
-          : { delayChildren: delay, staggerChildren: stagger },
+        transition: { delayChildren: delay, staggerChildren: stagger },
       },
     };
 
     const wordVariants = {
-      hidden: prefersReducedMotion
-        ? { opacity: 0 }
-        : { opacity: 0, y, filter: `blur(${blur}px)` },
-      visible: prefersReducedMotion
-        ? { opacity: 1, transition: { duration: 0.01 } }
-        : {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            transition: { duration, ease: EDITORIAL_EASE },
-          },
+      hidden: { opacity: 0, y, filter: `blur(${blur}px)` },
+      visible: {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        transition: { duration, ease: EDITORIAL_EASE },
+      },
     };
 
     const triggerProps =
@@ -176,15 +179,9 @@ export function BlurReveal({
     );
   }
 
-  const initial = prefersReducedMotion
-    ? { opacity: 0 }
-    : { opacity: 0, y, filter: `blur(${blur}px)` };
-  const target = prefersReducedMotion
-    ? { opacity: 1 }
-    : { opacity: 1, y: 0, filter: "blur(0px)" };
-  const transition = prefersReducedMotion
-    ? { duration: 0.01 }
-    : { duration, delay, ease: EDITORIAL_EASE };
+  const initial = { opacity: 0, y, filter: `blur(${blur}px)` };
+  const target = { opacity: 1, y: 0, filter: "blur(0px)" };
+  const transition = { duration, delay, ease: EDITORIAL_EASE };
 
   if (trigger === "mount") {
     return (

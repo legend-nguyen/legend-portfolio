@@ -32,8 +32,29 @@ function parseMessages(body: unknown): ChatMessage[] | null {
   return messages[messages.length - 1]?.role === "user" ? messages : null;
 }
 
+const UPSTREAM_TIMEOUT_MS = 25_000;
+
 function getIp(req: Request): string {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const vercelIp = req.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim();
+  if (vercelIp) return vercelIp;
+
+  const cfIp = req.headers.get("cf-connecting-ip")?.trim();
+  if (cfIp) return cfIp;
+
+  const realIp = req.headers.get("x-real-ip")?.trim();
+  if (realIp) return realIp;
+
+  const forwarded = req.headers.get("x-forwarded-for");
+  if (forwarded) {
+    const parts = forwarded
+      .split(",")
+      .map((part) => part.trim())
+      .filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (last) return last;
+  }
+
+  return "unknown";
 }
 
 export async function POST(req: Request): Promise<Response> {
@@ -45,15 +66,6 @@ export async function POST(req: Request): Promise<Response> {
     );
   }
 
-  const limit = rateLimit(getIp(req));
-  if (!limit.ok) {
-    const error =
-      limit.reason === "daily"
-        ? "Chatbot đã hết lượt trong hôm nay. Bạn quay lại vào ngày mai hoặc liên hệ trực tiếp nhé."
-        : "Bạn gửi hơi nhanh, vui lòng thử lại sau ít phút.";
-    return Response.json({ error }, { status: 429 });
-  }
-
   let body: unknown;
   try {
     body = await req.json();
@@ -63,6 +75,15 @@ export async function POST(req: Request): Promise<Response> {
   const messages = parseMessages(body);
   if (!messages) {
     return Response.json({ error: "Dữ liệu không hợp lệ." }, { status: 400 });
+  }
+
+  const limit = rateLimit(getIp(req));
+  if (!limit.ok) {
+    const error =
+      limit.reason === "daily"
+        ? "Chatbot đã hết lượt trong hôm nay. Bạn quay lại vào ngày mai hoặc liên hệ trực tiếp nhé."
+        : "Bạn gửi hơi nhanh, vui lòng thử lại sau ít phút.";
+    return Response.json({ error }, { status: 429 });
   }
 
   const upstream = await fetch(GROQ_URL, {
@@ -79,7 +100,10 @@ export async function POST(req: Request): Promise<Response> {
       max_tokens: MAX_OUTPUT_TOKENS,
       messages: [{ role: "system", content: buildSystemPrompt() }, ...messages],
     }),
-    signal: req.signal,
+    signal: AbortSignal.any([
+      req.signal,
+      AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
+    ]),
   }).catch(() => null);
 
   if (!upstream || !upstream.ok || !upstream.body) {
@@ -93,19 +117,22 @@ export async function POST(req: Request): Promise<Response> {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
   const source = upstream.body;
+  let reader: ReadableStreamDefaultReader<Uint8Array> | null = null;
+  let closed = false;
 
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
-      const reader = source.getReader();
+      reader = source.getReader();
       let buffer = "";
       try {
-        while (true) {
+        while (!closed) {
           const { done, value } = await reader.read();
-          if (done) break;
+          if (done || closed) break;
           buffer += decoder.decode(value, { stream: true });
           const lines = buffer.split("\n");
           buffer = lines.pop() ?? "";
           for (const line of lines) {
+            if (closed) break;
             if (!line.startsWith("data:")) continue;
             const data = line.slice(5).trim();
             if (!data || data === "[DONE]") continue;
@@ -114,19 +141,25 @@ export async function POST(req: Request): Promise<Response> {
                 choices?: { delta?: { content?: string } }[];
               };
               const text = json.choices?.[0]?.delta?.content;
-              if (text) controller.enqueue(encoder.encode(text));
+              if (text && !closed) controller.enqueue(encoder.encode(text));
             } catch {
               // bỏ qua dòng không phải JSON
             }
           }
         }
       } catch {
-        // client ngắt kết nối
+        // client ngắt kết nối hoặc upstream lỗi
       } finally {
-        controller.close();
+        reader?.releaseLock();
+        if (!closed) {
+          closed = true;
+          controller.close();
+        }
       }
     },
     cancel() {
+      closed = true;
+      void reader?.cancel();
       void source.cancel();
     },
   });

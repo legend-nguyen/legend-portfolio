@@ -1,5 +1,6 @@
 "use client";
 
+import { useReducedMotion } from "@/lib/motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -203,11 +204,13 @@ export function SplitText({
   textAlign = "center",
   onLetterAnimationComplete,
 }: SplitTextProps): ReactNode {
+  const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef<HTMLElement | null>(null);
   const onCompleteRef = useRef(onLetterAnimationComplete);
   const completedOnceRef = useRef(false);
   const [settledText, setSettledText] = useState<string | null>(null);
-  const isSettled = !loop && hoverEffect === "none" && settledText === text;
+  const isSettled =
+    prefersReducedMotion || (!loop && hoverEffect === "none" && settledText === text);
 
   useEffect(() => {
     onCompleteRef.current = onLetterAnimationComplete;
@@ -234,10 +237,6 @@ export function SplitText({
       if (targets.length === 0) return;
 
       completedOnceRef.current = false;
-
-      const prefersReducedMotion =
-        typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (prefersReducedMotion) {
         gsap.set(targets, {
@@ -455,6 +454,7 @@ export function SplitText({
         to,
         threshold,
         rootMargin,
+        prefersReducedMotion,
       ],
     }
   );

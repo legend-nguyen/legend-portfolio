@@ -1,5 +1,6 @@
 "use client";
 
+import { useReducedMotion } from "@/lib/motion";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { Renderer, Program, Mesh, Triangle, Transform, Texture } from "ogl";
@@ -120,6 +121,7 @@ export function PortraitMorph({
   alt,
   className,
 }: PortraitMorphProps): ReactNode {
+  const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [ready, setReady] = useState(false);
   const hoverRef = useRef(false);
@@ -131,6 +133,8 @@ export function PortraitMorph({
   );
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -186,25 +190,25 @@ export function PortraitMorph({
     const mesh = new Mesh(gl, { geometry, program });
     mesh.setParent(scene);
 
-    const resize = () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      renderer.setSize(w, h);
-      canvas.style.width = "100%";
-      canvas.style.height = "100%";
-      program.uniforms.uResolution.value = [w * renderer.dpr, h * renderer.dpr];
-    };
-    const ro = new ResizeObserver(resize);
-    ro.observe(container);
-    resize();
-
     let raf = 0;
     let last = performance.now();
     let time = 0;
     let running = true;
+    let loaded = false;
+    let onScreen = true;
 
-    const tick = () => {
-      if (!running) return;
+    const renderFrame = (): void => {
+      program.uniforms.uTime.value = time;
+      program.uniforms.uProgress.value = progressRef.current;
+      program.uniforms.uOrigin.value = originRef.current;
+      program.uniforms.uDirection.value = directionRef.current;
+      program.uniforms.uImageSize.value = imageSize;
+      renderer.render({ scene });
+    };
+
+    const tick = (): void => {
+      raf = 0;
+      if (!running || !loaded || !onScreen || document.hidden) return;
       const now = performance.now();
       const dt = Math.min((now - last) / 1000, 0.05);
       last = now;
@@ -215,23 +219,62 @@ export function PortraitMorph({
       const k = 1 - Math.exp(-stiffness * dt);
       progressRef.current += (target - progressRef.current) * k;
 
-      program.uniforms.uTime.value = time;
-      program.uniforms.uProgress.value = progressRef.current;
-      program.uniforms.uOrigin.value = originRef.current;
-      program.uniforms.uDirection.value = directionRef.current;
-      program.uniforms.uImageSize.value = imageSize;
+      const settled = Math.abs(target - progressRef.current) < 0.001;
+      if (settled) {
+        progressRef.current = target;
+      }
 
-      renderer.render({ scene });
-      raf = requestAnimationFrame(tick);
+      renderFrame();
+
+      if (!settled) {
+        raf = requestAnimationFrame(tick);
+      }
     };
+
+    const wake = (): void => {
+      if (!running || !loaded || !onScreen || document.hidden) return;
+      if (!raf) {
+        last = performance.now();
+        raf = requestAnimationFrame(tick);
+      }
+    };
+
+    const resize = () => {
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      renderer.setSize(w, h);
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      program.uniforms.uResolution.value = [w * renderer.dpr, h * renderer.dpr];
+      if (loaded) renderFrame();
+    };
+    const ro = new ResizeObserver(resize);
+    ro.observe(container);
+    resize();
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        onScreen = entries.some((entry) => entry.isIntersecting);
+        if (onScreen) wake();
+      },
+      { rootMargin: "100px" }
+    );
+    io.observe(container);
+
+    const onVisibility = (): void => {
+      if (!document.hidden) wake();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
 
     Promise.all([loadImage(srcA, texA), loadImage(srcB, texB)])
       .then(() => {
+        if (!running) return;
+        loaded = true;
         setReady(true);
-        last = performance.now();
-        tick();
+        renderFrame();
       })
       .catch(() => {
+        if (!running) return;
         setReady(false);
       });
 
@@ -255,6 +298,7 @@ export function PortraitMorph({
       directionRef.current = computeEdgeDirection(x, y);
       lastPointerRef.current = { x, y, t: performance.now() };
       hoverRef.current = true;
+      wake();
     };
     const onPointerLeave = (e: PointerEvent) => {
       const rect = container.getBoundingClientRect();
@@ -266,6 +310,7 @@ export function PortraitMorph({
         number,
       ];
       hoverRef.current = false;
+      wake();
     };
     const onPointerMove = (e: PointerEvent) => {
       const rect = container.getBoundingClientRect();
@@ -295,6 +340,8 @@ export function PortraitMorph({
       running = false;
       cancelAnimationFrame(raf);
       ro.disconnect();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
       container.removeEventListener("pointerenter", onPointerEnter);
       container.removeEventListener("pointerleave", onPointerLeave);
       container.removeEventListener("pointermove", onPointerMove);
@@ -302,7 +349,7 @@ export function PortraitMorph({
       if (ext) ext.loseContext();
       if (canvas.parentNode === container) container.removeChild(canvas);
     };
-  }, [srcA, srcB]);
+  }, [srcA, srcB, prefersReducedMotion]);
 
   return (
     <div
@@ -317,7 +364,7 @@ export function PortraitMorph({
         filter: "grayscale(100%)",
       }}
     >
-      {!ready ? (
+      {prefersReducedMotion || !ready ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={srcA}
